@@ -23,7 +23,7 @@ const int statics::bumpSbstrsLen = 1;
 const std::string statics::bumpSbstrs[] = { "_bmp." };
 
 ////// NORMAL MAPS
-const int statics::normalSbstrsLen = 3;
+const int statics::normalSbstrsLen = 4;
 const std::string statics::normalSbstrs[] = { "_normal.", "_N.", "_n.", "_nY+." };
 
 ////// GLOSSINESS MAPS
