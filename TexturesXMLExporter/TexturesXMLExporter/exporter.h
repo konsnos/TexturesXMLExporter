@@ -1,0 +1,44 @@
+/*
+* <author>Konstantinos Egkarchos</author>
+* <contact>konsnosl@gmail.com</contact>
+*/
+#pragma once
+
+#include <string>
+
+#include "boost\filesystem\path.hpp"
+
+using namespace std;
+using namespace boost::filesystem;
+
+class exporter
+{
+public:
+	exporter();
+	~exporter();
+
+	static unsigned long fileImg_count;
+	static unsigned long fileOther_count;
+	static unsigned long fileDif_count;
+	static unsigned long fileBmp_count;
+	static unsigned long fileNormal_count;
+	static unsigned long fileGloss_count;
+	static unsigned long fileHeight_count;
+	static unsigned long fileSpec_count;
+	static unsigned long fileRough_count;
+	static unsigned long fileMetal_count;
+	static unsigned long fileUnkn_count;
+	static unsigned long dir_count;
+	static unsigned long other_count;
+	static unsigned long err_count;
+
+	static int indents;
+private:
+	const char* generate_xml();
+	/** Appends tab at lines as many times as given. Adds to xml a string. */
+	void addIndents(int indents, string &xmlToWrite, string &strToAppend);
+	void printFormatted(char* chars, int count) const;
+
+	string xmlToWrite;
+};
+
