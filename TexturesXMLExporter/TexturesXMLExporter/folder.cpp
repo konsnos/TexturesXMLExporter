@@ -1,3 +1,7 @@
+/*
+* <author>Konstantinos Egkarchos</author>
+* <contact>konsnosl@gmail.com</contact>
+*/
 #include "folder.h"
 #include "statics.h"
 #include "exporter.h"

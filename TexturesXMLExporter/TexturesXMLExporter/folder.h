@@ -1,3 +1,7 @@
+/*
+* <author>Konstantinos Egkarchos</author>
+* <contact>konsnosl@gmail.com</contact>
+*/
 #pragma once
 
 #include <vector>

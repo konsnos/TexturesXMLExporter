@@ -64,9 +64,28 @@ exporter::exporter()
 	ofstream myfile;
 	myfile.open("textures.xml");
 
+	generateTreeOrder();
 	myfile << generate_xml();
 
 	myfile.close();
+}
+
+void exporter::generateTreeOrder()
+{
+	char currentPath[FILENAME_MAX];
+	if (!_getcwd(currentPath, FILENAME_MAX))
+	{
+		cout << "Error: Could not retrieve current path. Exitting..." << endl;
+	}
+
+	cout << "Current path is\n" << currentPath << endl << "\nTextures will be generated from this path." << endl << endl;
+
+	path rootPath(currentPath);
+
+	if (is_directory(rootPath))
+	{
+		rootFolder = new folder(rootPath);
+	}
 }
 
 /** 
@@ -92,44 +111,29 @@ const char* exporter::generate_xml()
 		xmlToWrite.append("<Texs>\n");
 	}
 
-	char currentPath[FILENAME_MAX];
-	if (!_getcwd(currentPath, FILENAME_MAX))
-	{
-		cout << "Error: Could not retrieve current path. Exitting..." << endl;
-		return NULL;
-	}
+	indents = 1;
 
-	cout << "Current path is\n" << currentPath << endl << "\nTextures will be generated from this path." << endl << endl;
+	xmlToWrite.append(rootFolder->getXMLElement());
 
-	path rootPath(currentPath);
-
-	if (is_directory(rootPath))
-	{
-		indents = 1;
-
-		folder rootFolder(rootPath);
-		xmlToWrite.append(rootFolder.getXMLElement());
-
-		cout << endl;
-		cout << std::setfill('-') << std::setw(38) << " " << endl;
-		cout << std::setfill(' ');
-		printFormatted("| Images", fileImg_count);
-		printFormatted("| Diffuse maps", fileDif_count);
-		printFormatted("| Bump maps", fileBmp_count);
-		printFormatted("| Normal maps", fileNormal_count);
-		printFormatted("| Glossiness maps", fileGloss_count);
-		printFormatted("| Height maps", fileHeight_count);
-		printFormatted("| Specular maps", fileSpec_count);
-		printFormatted("| Roughness maps", fileRough_count);
-		printFormatted("| Metalness maps", fileMetal_count);
-		printFormatted("| Unknown maps", fileUnkn_count);
-		printFormatted("| Other files", fileOther_count);
-		printFormatted("| Directories", dir_count);
-		printFormatted("| Others", other_count);
-		printFormatted("| Errors", err_count);
-		cout << std::setfill('-') << std::setw(38) << " " << endl;
-		cout << std::setfill(' ') << std::setw(0);
-	}
+	cout << endl;
+	cout << std::setfill('-') << std::setw(38) << " " << endl;
+	cout << std::setfill(' ');
+	printFormatted("| Images", fileImg_count);
+	printFormatted("| Diffuse maps", fileDif_count);
+	printFormatted("| Bump maps", fileBmp_count);
+	printFormatted("| Normal maps", fileNormal_count);
+	printFormatted("| Glossiness maps", fileGloss_count);
+	printFormatted("| Height maps", fileHeight_count);
+	printFormatted("| Specular maps", fileSpec_count);
+	printFormatted("| Roughness maps", fileRough_count);
+	printFormatted("| Metalness maps", fileMetal_count);
+	printFormatted("| Unknown maps", fileUnkn_count);
+	printFormatted("| Other files", fileOther_count);
+	printFormatted("| Directories", dir_count);
+	printFormatted("| Others", other_count);
+	printFormatted("| Errors", err_count);
+	cout << std::setfill('-') << std::setw(38) << " " << endl;
+	cout << std::setfill(' ') << std::setw(0);
 
 	xmlToWrite.append("</Texs>\n");
 	return xmlToWrite.c_str();

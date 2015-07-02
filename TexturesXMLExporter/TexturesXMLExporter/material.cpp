@@ -1,3 +1,7 @@
+/*
+* <author>Konstantinos Egkarchos</author>
+* <contact>konsnosl@gmail.com</contact>
+*/
 #include "material.h"
 #include "exporter.h"
 

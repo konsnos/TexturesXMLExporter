@@ -8,6 +8,8 @@
 
 #include "boost\filesystem\path.hpp"
 
+#include "folder.h"
+
 using namespace std;
 using namespace boost::filesystem;
 
@@ -38,6 +40,10 @@ private:
 	/** Appends tab at lines as many times as given. Adds to xml a string. */
 	void addIndents(int indents, string &xmlToWrite, string &strToAppend);
 	void printFormatted(char* chars, int count) const;
+	void exporter::generateTreeOrder();
+
+	/* The root path for the textures. */
+	folder * rootFolder;
 
 	string xmlToWrite;
 };
