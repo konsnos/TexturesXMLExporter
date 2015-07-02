@@ -24,6 +24,9 @@ public:
 	const string getXMLElement() const;
 	/* Returns the name of the material. */
 	const string getName() const;
+
+	/* Free up taken memory from this material. */
+	void destroy();
 private:
 	/* Name of the material. */
 	string name;

@@ -64,18 +64,21 @@ exporter::exporter()
 	ofstream myfile;
 	myfile.open("textures.xml");
 
-	generateTreeOrder();
-	myfile << generate_xml();
+	if (generateTreeOrder())
+	{
+		myfile << generate_xml();
+	}
 
 	myfile.close();
 }
 
-void exporter::generateTreeOrder()
+bool exporter::generateTreeOrder()
 {
 	char currentPath[FILENAME_MAX];
 	if (!_getcwd(currentPath, FILENAME_MAX))
 	{
 		cout << "Error: Could not retrieve current path. Exitting..." << endl;
+		return false;
 	}
 
 	cout << "Current path is\n" << currentPath << endl << "\nTextures will be generated from this path." << endl << endl;
@@ -85,7 +88,12 @@ void exporter::generateTreeOrder()
 	if (is_directory(rootPath))
 	{
 		rootFolder = new folder(rootPath);
+
+		// Trim folders
+		rootFolder->trimSingleMatFolders();
 	}
+
+	return true;
 }
 
 /** 
@@ -163,4 +171,5 @@ string removeSpaces(string str)
 
 exporter::~exporter()
 {
+	//rootFolder->destroy();
 }

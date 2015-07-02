@@ -26,8 +26,14 @@ public:
 	const int getMatsRecAmount() const;
 	/* Adds a material in the list of materials of this folder. */
 	void addMat(material * newMat);
+	/* Trims single material folders. Moves the material to the parent one. */
+	void trimSingleMatFolders();
 	/* Returns the xml of this folder. */
 	const string getXMLElement() const;
+	/* Remove the last material from the list and return it. */
+	material * popMaterial();
+	/* Free up taken memory from variables of this folder. */
+	void destroy();
 
 private:
 	path curPath;
@@ -38,4 +44,3 @@ private:
 	/* Recursively creates the list of materials and folders in this directory and all subdirectories. */
 	void listDir();
 };
-

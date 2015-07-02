@@ -73,6 +73,20 @@ void folder::listDir()
 	}
 }
 
+material * folder::popMaterial()
+{
+	if (mats.size() > 0)
+	{
+		material * poppedMat = mats.back();
+		mats.pop_back();
+		return poppedMat;
+	}
+	else
+	{
+		return nullptr;
+	}
+}
+
 material * folder::getMaterials()
 {
 	return mats[0];
@@ -141,4 +155,50 @@ const string folder::getXMLElement() const
 	elem += "</folder>\n";
 
 	return elem;
+}
+
+void folder::trimSingleMatFolders()
+{
+	for (std::vector<folder*>::iterator it = folders.begin(); it != folders.end();)
+	{
+		(*it)->trimSingleMatFolders();
+
+		int matsRecAmount = (*it)->getMatsRecAmount();
+		if (matsRecAmount == 0)
+		{
+			(*it)->destroy();
+			delete * it;
+			it = folders.erase(it);
+		}
+		else if (matsRecAmount == 1 && (*it)->getMatsAmount() == 1)
+		{
+			material* folderMat = (*it)->popMaterial();
+			mats.push_back(folderMat);
+			(*it)->destroy();
+			delete * it;
+			it = folders.erase(it);
+		}
+		else
+		{
+			++it;
+		}
+	}
+}
+
+void folder::destroy()
+{
+	// Materials
+	for (std::vector<material*>::iterator it = mats.begin(); it != mats.end(); ++it)
+	{
+		(*it)->destroy();
+		delete *it;
+	}
+	mats.clear();
+	// Folders
+	for (std::vector<folder*>::iterator it = folders.begin(); it != folders.end(); ++it)
+	{
+		(*it)->destroy();
+		delete *it;
+	}
+	folders.clear();
 }

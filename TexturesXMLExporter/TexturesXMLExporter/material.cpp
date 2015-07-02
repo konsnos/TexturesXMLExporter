@@ -53,3 +53,12 @@ const string material::getName() const
 {
 	return name;
 }
+
+void material::destroy()
+{
+	for (std::vector<map*>::iterator it = maps.begin(); it != maps.end(); ++it)
+	{
+		delete *it;
+	}
+	maps.clear();
+}
