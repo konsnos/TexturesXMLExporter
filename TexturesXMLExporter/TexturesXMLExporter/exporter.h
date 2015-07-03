@@ -41,10 +41,16 @@ private:
 	void addIndents(int indents, string &xmlToWrite, string &strToAppend);
 	void printFormatted(char* chars, int count) const;
 	/* Generate tree folder list with all the textures in them. */
-	bool exporter::generateTreeOrder();
+	void generateTreeOrder();
+	/* Instantiates the thumbnails path. */
+	void initializeThumbnailsPath();
+	/* Initializes the starting path. */
+	void initializeStartingDir();
 
-	/* The root path for the textures. */
+	/* The staring folder for the textures. */
 	folder * rootFolder;
+	/* The starting path of the folders. */
+	path * rootPath;
 
 	string xmlToWrite;
 };

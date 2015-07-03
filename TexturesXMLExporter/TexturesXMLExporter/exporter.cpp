@@ -61,46 +61,70 @@ exporter::exporter()
 	other_count = 0;
 	err_count = 0;
 
+	initializeStartingDir();
+	initializeThumbnailsPath();
+
 	ofstream myfile;
 	myfile.open("textures.xml");
 
-	if (generateTreeOrder())
-	{
-		myfile << generate_xml();
-	}
+	generateTreeOrder();
+
+	myfile << generate_xml();
 
 	myfile.close();
 }
 
-bool exporter::generateTreeOrder()
+void exporter::initializeStartingDir()
 {
 	if (statics::startingPath == "") // no path. Generate current.
 	{
 		if ((statics::startingPath = _getcwd(NULL, 0)) == NULL)
 		{
 			cout << "Error: Could not retrieve current path. Exitting..." << endl;
-			return false;
+			exit(1);
 		}
 	}
 
-	cout << "Current path is\n" << statics::startingPath << endl << "\nTextures will be generated from this path." << endl << endl;
+	cout << "Root path is\n" << statics::startingPath << endl << endl;
+	rootPath = new path(statics::startingPath);
 
-	path rootPath(statics::startingPath);
-
-	if (is_directory(rootPath))
+	if (!is_directory(*rootPath))
 	{
-		rootFolder = new folder(rootPath);
+		cout << "Error: Current path is not a directory. Exitting..." << endl;
+		exit(1);
+	}
+}
 
-		// Trim folders
-		rootFolder->trimSingleMatFolders();
+void exporter::initializeThumbnailsPath()
+{
+	path tempDir(rootPath->generic_string() + "/" + statics::thumbnailsFolderName);
+
+	if (is_directory(tempDir))	// Check if thumbnails directory exists.
+	{
+		cout << "Using thumbnails directory at " << tempDir << endl;
 	}
 	else
 	{
-		cout << "Error: Current path is not a directory. Exitting..." << endl;
-		return false;
+		if (boost::filesystem::create_directory(tempDir))	// Create thumbnails directory
+		{
+			cout << "Thumbnails folder created at " << tempDir << endl;
+		}
+		else	// Couldn't create thumbnail directory.
+		{
+			cout << "Error: Thumbnails folder couldn't be created.";
+			exit(1);	// Exit with error.
+		}
 	}
 
-	return true;
+	statics::thumbnailsPath = new string(tempDir.generic_string());
+}
+
+void exporter::generateTreeOrder()
+{
+	rootFolder = new folder(*rootPath);
+
+	// Trim folders
+	rootFolder->trimSingleMatFolders();
 }
 
 /** 

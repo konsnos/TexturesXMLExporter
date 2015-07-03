@@ -34,7 +34,10 @@ void folder::listDir()
 	{
 		if (is_directory(paths[i]))
 		{
-			folders.push_back(new folder(paths[i]));
+			if (paths[i].filename() != statics::thumbnailsFolderName)	// Ignore thumbnails folder.
+			{
+				folders.push_back(new folder(paths[i]));
+			}
 		}
 		else if (is_regular_file(paths[i]))
 		{
@@ -183,6 +186,11 @@ void folder::trimSingleMatFolders()
 			++it;
 		}
 	}
+}
+
+string folder::getPath() const
+{
+	return curPath.generic_string();
 }
 
 void folder::destroy()

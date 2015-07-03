@@ -17,7 +17,7 @@ void handleCMDArguments(int argc, char* argv[])
 	{
 		arg = argv[i];
 
-		if (arg == "--help")		// Help
+		if (arg == "--help")			// Help
 		{
 			cout << "\nTexturesXMLExporter\n\nGenerate an xml containing all textures in material format inside their folders.\n\nOptional Arguments\n\n-p\n\tA custom path must be supplied.\n\n--help\n\tDisplay this help and exit\n\n--version\n\tOutput version information and exit" << endl;
 			exit(0);
@@ -27,7 +27,7 @@ void handleCMDArguments(int argc, char* argv[])
 			cout << "\nTexturesXMLExporter version " << statics::version << endl << endl;
 			exit(0);
 		}
-		else if (arg == "-p")		// Path
+		else if (arg == "-p")			// Path
 		{
 			if (i+1 != argc)
 			{
