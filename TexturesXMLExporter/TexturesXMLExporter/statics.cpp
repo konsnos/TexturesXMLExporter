@@ -46,6 +46,10 @@ const std::string statics::roughSbstrs[] = { "_r.", "_R." };
 const int statics::metalSbstrsLen = 2;
 const std::string statics::metalSbstrs[] = { "_m.", "_MT." };
 
+char* statics::startingPath = "";
+
+const float statics::version = 0.1f;
+
 /** 
 	Checks if file extension (suffix) is part of the img suffix array.
 	Returns true if it is.

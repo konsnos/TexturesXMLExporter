@@ -60,4 +60,9 @@ public:
 
 	/* Compares two paths for their type, and if the same compares their file name. */
 	static bool sortByTypeNFilename(const path &a, const path &b);
+
+	/* Starting path to search for textures. */
+	static char* startingPath;
+	/* Version of this program. */
+	static const float version;
 };

@@ -74,16 +74,18 @@ exporter::exporter()
 
 bool exporter::generateTreeOrder()
 {
-	char currentPath[FILENAME_MAX];
-	if (!_getcwd(currentPath, FILENAME_MAX))
+	if (statics::startingPath == "") // no path. Generate current.
 	{
-		cout << "Error: Could not retrieve current path. Exitting..." << endl;
-		return false;
+		if ((statics::startingPath = _getcwd(NULL, 0)) == NULL)
+		{
+			cout << "Error: Could not retrieve current path. Exitting..." << endl;
+			return false;
+		}
 	}
 
-	cout << "Current path is\n" << currentPath << endl << "\nTextures will be generated from this path." << endl << endl;
+	cout << "Current path is\n" << statics::startingPath << endl << "\nTextures will be generated from this path." << endl << endl;
 
-	path rootPath(currentPath);
+	path rootPath(statics::startingPath);
 
 	if (is_directory(rootPath))
 	{
@@ -91,6 +93,11 @@ bool exporter::generateTreeOrder()
 
 		// Trim folders
 		rootFolder->trimSingleMatFolders();
+	}
+	else
+	{
+		cout << "Error: Current path is not a directory. Exitting..." << endl;
+		return false;
 	}
 
 	return true;
