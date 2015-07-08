@@ -80,7 +80,7 @@ const mapType map::getType() const
 const string map::getXMLElement() const
 {
 	string elem = getType().getString();
-	string xmlElem("<" + elem + ">" + curPath.string() + "</" + elem + ">");
+	string xmlElem("<" + elem + " thumb=\"" + thumbPath.string() + "\">" + curPath.string() + "</" + elem + ">");
 
 	return xmlElem;
 }
@@ -98,4 +98,14 @@ string map::getMatName() const
 		size_t dotPos = filename.find_last_of(".");
 		return filename.substr(0, dotPos);
 	}
+}
+
+void map::generateThumb()
+{
+	thumbPath = string(statics::thumbnailsPath->c_str()).append("\\").append(curPath.filename().generic_string()).append(".png");
+
+	string cmmd("convert -resize 200x200 ");
+	cmmd.append("\"").append(curPath.generic_string()).append("\" \"").append(thumbPath.generic_string()).append("\"");
+
+	system(cmmd.c_str());
 }

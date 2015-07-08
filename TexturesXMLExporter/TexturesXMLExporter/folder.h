@@ -32,6 +32,8 @@ public:
 	const string getXMLElement() const;
 	/* Remove the last material from the list and return it. */
 	material * popMaterial();
+	/* Iterate recursively all materials in folder to generate thumbnails. */
+	void iterateMatsForThumbs();
 	/* Returns the path of the folder. */
 	string getPath() const;
 	/* Free up taken memory from variables of this folder. */

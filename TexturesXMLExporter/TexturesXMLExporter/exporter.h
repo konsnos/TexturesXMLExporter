@@ -42,6 +42,8 @@ private:
 	void printFormatted(char* chars, int count) const;
 	/* Generate tree folder list with all the textures in them. */
 	void generateTreeOrder();
+	/* Generates thumbnails for all maps in materials. */
+	void generateThumbs();
 	/* Instantiates the thumbnails path. */
 	void initializeThumbnailsPath();
 	/* Initializes the starting path. */

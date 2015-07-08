@@ -68,6 +68,7 @@ exporter::exporter()
 	myfile.open("textures.xml");
 
 	generateTreeOrder();
+	generateThumbs();
 
 	myfile << generate_xml();
 
@@ -97,7 +98,7 @@ void exporter::initializeStartingDir()
 
 void exporter::initializeThumbnailsPath()
 {
-	path tempDir(rootPath->generic_string() + "/" + statics::thumbnailsFolderName);
+	path tempDir(rootPath->string() + "\\" + statics::thumbnailsFolderName);
 
 	if (is_directory(tempDir))	// Check if thumbnails directory exists.
 	{
@@ -116,7 +117,12 @@ void exporter::initializeThumbnailsPath()
 		}
 	}
 
-	statics::thumbnailsPath = new string(tempDir.generic_string());
+	statics::thumbnailsPath = new string(tempDir.string());
+}
+
+void exporter::generateThumbs()
+{
+	rootFolder->iterateMatsForThumbs();
 }
 
 void exporter::generateTreeOrder()

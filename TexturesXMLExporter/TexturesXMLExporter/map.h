@@ -24,6 +24,8 @@ public:
 	string getMatName() const;
 	/* Returns the xml string of this map. */
 	const string getXMLElement() const;
+	/* Generates thumbnail for this map. */
+	void generateThumb();
 	/* Returns the string of the map type. */
 	const mapType getType() const;
 
@@ -33,6 +35,9 @@ private:
 	mapType type;
 	/* File's full path. */
 	path curPath;
+	/* Thumbnail's path. */
+	path thumbPath;
+	/* Registers map. Assigns and counts image type. */
 	void registerMap();
 };
 

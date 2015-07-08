@@ -120,6 +120,25 @@ void folder::addMat(material * newMat)
 	mats.push_back(newMat);
 }
 
+void folder::iterateMatsForThumbs()
+{
+	{
+		size_t length = folders.size();
+		for (size_t f = 0; f < length; f++)
+		{
+			folders[f]->iterateMatsForThumbs();
+		}
+	}
+
+	{
+		size_t length = mats.size();
+		for (size_t f = 0; f < length; f++)
+		{
+			mats[f]->generateMapsThumbs();
+		}
+	}
+}
+
 const string folder::getXMLElement() const
 {
 	string elem;
