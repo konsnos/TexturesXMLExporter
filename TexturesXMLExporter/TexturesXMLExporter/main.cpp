@@ -43,6 +43,9 @@ void handleCMDArguments(int argc, char* argv[])
 	cout << endl << endl;;
 }
 
+/*
+	Goal of the program is to generate thumbnails of all textures and an xml with those textures and thumbnails to load into a javascript page in order to be able to preview these files easily.
+*/
 int main(int argc, char* argv[])
 {
 	handleCMDArguments(argc, argv);

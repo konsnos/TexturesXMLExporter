@@ -24,7 +24,7 @@ public:
 	string getMatName() const;
 	/* Returns the xml string of this map. */
 	const string getXMLElement() const;
-	/* Generates thumbnail for this map. */
+	/* Generates thumbnail for this map if it doesn't exist. */
 	void generateThumb();
 	/* Returns the string of the map type. */
 	const mapType getType() const;

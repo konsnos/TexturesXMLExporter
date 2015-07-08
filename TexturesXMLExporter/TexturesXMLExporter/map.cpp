@@ -8,6 +8,8 @@
 
 #include <iostream>
 
+#include "boost/filesystem/operations.hpp"
+
 
 map::map(path& refPath)
 	: curPath(refPath)
@@ -104,8 +106,11 @@ void map::generateThumb()
 {
 	thumbPath = string(statics::thumbnailsPath->c_str()).append("\\").append(curPath.filename().generic_string()).append(".png");
 
-	string cmmd("convert -resize 200x200 ");
-	cmmd.append("\"").append(curPath.generic_string()).append("\" \"").append(thumbPath.generic_string()).append("\"");
+	if (!boost::filesystem::exists(thumbPath))
+	{
+		string cmmd("convert -resize 200x200 ");
+		cmmd.append("\"").append(curPath.generic_string()).append("\" \"").append(thumbPath.generic_string()).append("\"");
 
-	system(cmmd.c_str());
+		system(cmmd.c_str());
+	}
 }

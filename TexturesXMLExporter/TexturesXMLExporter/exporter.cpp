@@ -68,8 +68,11 @@ exporter::exporter()
 	myfile.open("textures.xml");
 
 	generateTreeOrder();
+
+	cout << "Generating thumbnails..." << endl;
 	generateThumbs();
 
+	cout << "Generating textures.xml..." << endl;
 	myfile << generate_xml();
 
 	myfile.close();
@@ -102,13 +105,13 @@ void exporter::initializeThumbnailsPath()
 
 	if (is_directory(tempDir))	// Check if thumbnails directory exists.
 	{
-		cout << "Using thumbnails directory at " << tempDir << endl;
+		cout << "Using thumbnails directory at " << tempDir << endl << endl;
 	}
 	else
 	{
 		if (boost::filesystem::create_directory(tempDir))	// Create thumbnails directory
 		{
-			cout << "Thumbnails folder created at " << tempDir << endl;
+			cout << "Thumbnails folder created at " << tempDir << endl << endl;
 		}
 		else	// Couldn't create thumbnail directory.
 		{
