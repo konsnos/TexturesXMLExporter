@@ -13,7 +13,7 @@ using namespace std;
 void handleCMDArguments(int argc, char* argv[])
 {
 	string arg;
-	for (size_t i = 1; i < argc; i++)
+	for (int i = 1; i < argc; i++)
 	{
 		arg = argv[i];
 
