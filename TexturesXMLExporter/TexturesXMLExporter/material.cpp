@@ -23,11 +23,8 @@ void material::addMap(map* newMap)
 
 void material::generateMapsThumbs()
 {
-	size_t mapsSize = maps.size();
-	for (size_t m = 0; m < mapsSize; m++)
-	{
-		maps[m]->generateThumb();
-	}
+	for (auto& map : maps)
+		map->generateThumb();
 }
 
 const string material::getXMLElement() const

@@ -30,20 +30,20 @@ void folder::listDir()
 
 	sort(paths.begin(), paths.end(), &statics::sortByTypeNFilename);
 
-	for (size_t i = 0; i < paths.size(); i++)
+	for (auto& path : paths)
 	{
-		if (is_directory(paths[i]))
+		if (is_directory(path))
 		{
-			if (paths[i].filename() != statics::thumbnailsFolderName)	// Ignore thumbnails folder.
+			if (path.filename() != statics::thumbnailsFolderName)	// Ignore thumbnails folder.
 			{
-				folders.push_back(new folder(paths[i]));
+				folders.push_back(new folder(path));
 			}
 		}
-		else if (is_regular_file(paths[i]))
+		else if (is_regular_file(path))
 		{
-			if (statics::isImgSffx(paths[i].extension().generic_string()))
+			if (statics::isImgSffx(path.extension().generic_string()))
 			{
-				map* newMap = new map(paths[i]);
+				map* newMap = new map(path);
 
 				/// Check if material exists.
 				size_t length = mats.size();
@@ -106,11 +106,8 @@ const int folder::getMatsRecAmount() const
 
 	amount += getMatsAmount();
 
-	size_t length = folders.size();
-	for (size_t i = 0; i < length; i++)
-	{
-		amount += folders[i]->getMatsRecAmount();
-	}
+	for (auto& folder : folders)
+		amount += folder->getMatsRecAmount();
 
 	return amount;
 }
@@ -122,21 +119,11 @@ void folder::addMat(material * newMat)
 
 void folder::iterateMatsForThumbs()
 {
-	{
-		size_t length = folders.size();
-		for (size_t f = 0; f < length; f++)
-		{
-			folders[f]->iterateMatsForThumbs();
-		}
-	}
+	for (auto& folder : folders)
+		folder->iterateMatsForThumbs();
 
-	{
-		size_t length = mats.size();
-		for (size_t f = 0; f < length; f++)
-		{
-			mats[f]->generateMapsThumbs();
-		}
-	}
+	for (auto& mat : mats)
+		mat->generateMapsThumbs();
 }
 
 const string folder::getXMLElement() const
@@ -151,24 +138,12 @@ const string folder::getXMLElement() const
 	exporter::indents++;
 
 	/// Add subdirs
-	{
-		size_t length = folders.size();
-		for (size_t f = 0; f < length; f++)
-		{
-			elem += folders[f]->getXMLElement();
-		}
-	}
-	/// ~Add subdirs
+	for (auto& folder : folders)
+		elem += folder->getXMLElement();
 
 	/// Add materials
-	{
-		size_t length = mats.size();
-		for (size_t f = 0; f < length; f++)
-		{
-			elem += mats[f]->getXMLElement();
-		}
-	}
-	/// ~Add materials
+	for (auto& mat : mats)
+		elem += mat->getXMLElement();
 
 	exporter::indents--;
 
