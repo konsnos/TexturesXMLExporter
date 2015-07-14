@@ -37,8 +37,6 @@ public:
 	static int indents;
 private:
 	const char* generate_xml();
-	/** Appends tab at lines as many times as given. Adds to xml a string. */
-	void addIndents(int indents, string &xmlToWrite, string &strToAppend);
 	void printFormatted(char* chars, int count) const;
 	/* Generate tree folder list with all the textures in them. */
 	void generateTreeOrder();

@@ -36,6 +36,8 @@ public:
 	void iterateMatsForThumbs();
 	/* Returns the path of the folder. */
 	string getPath() const;
+	/* Returns the parent path of the folder. */
+	string getPath_Parent() const;
 	/* Free up taken memory from variables of this folder. */
 	void destroy();
 

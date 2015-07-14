@@ -184,7 +184,16 @@ void folder::trimSingleMatFolders()
 
 string folder::getPath() const
 {
-	return curPath.generic_string();
+	return curPath.string();
+}
+
+string folder::getPath_Parent() const
+{
+	if (curPath.has_parent_path())
+	{
+		return curPath.parent_path().string();
+	}
+	return "";
 }
 
 void folder::destroy()

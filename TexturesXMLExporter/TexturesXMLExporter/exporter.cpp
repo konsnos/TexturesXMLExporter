@@ -156,7 +156,7 @@ const char* exporter::generate_xml()
 		xmlToWrite.append(buffer);
 		xmlToWrite.append(" -->\n");
 		//delete date;
-		xmlToWrite.append("<Texs>\n");
+		xmlToWrite.append("<Texs path=\"" + rootFolder->getPath_Parent() + "\">\n");
 	}
 
 	indents = 1;
@@ -190,15 +190,6 @@ const char* exporter::generate_xml()
 void exporter::printFormatted(char* chars, int count) const
 {
 	cout << std::setw(26) << std::left << chars << std::right << std::setw(2) << "|" << std::setw(6) << count << std::setw(3) << "|"  << endl;
-}
-
-
-void exporter::addIndents(int indents, string &xmlToWrite, string &strToAppend)
-{
-	for (int i = 0; i < indents; i++)
-		xmlToWrite.append("\t");
-
-	xmlToWrite.append(strToAppend + "\n");
 }
 
 /** Removes all spaces from the string and returns the value. */
