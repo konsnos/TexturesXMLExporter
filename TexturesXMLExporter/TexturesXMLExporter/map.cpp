@@ -82,7 +82,7 @@ const mapType map::getType() const
 const string map::getXMLElement() const
 {
 	string elem = getType().getString();
-	string xmlElem("<" + elem + " thumb=\"" + thumbPath.string() + "\">" + curPath.string() + "</" + elem + ">");
+	string xmlElem("<map type=\"" + elem + "\"" + " thumb=\"" + thumbPath.string() + "\">" + curPath.string() + "</map>");
 
 	return xmlElem;
 }
