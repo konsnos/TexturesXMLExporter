@@ -20,10 +20,10 @@ public:
 	map(path &);
 	~map();
 
-	/* Returns the material name without any file extensions or map type substrings. */
-	string getMatName() const;
 	/* Returns the xml string of this map. */
 	const string getXMLElement() const;
+	/* Returns the material name without any file extensions or map type substrings. */
+	const string getName() const;
 	/* Generates thumbnail for this map if it doesn't exist. */
 	void generateThumb();
 	/* Returns the string of the map type. */

@@ -87,7 +87,7 @@ const string map::getXMLElement() const
 	return xmlElem;
 }
 
-string map::getMatName() const
+const string map::getName() const
 {
 	string filename = curPath.filename().generic_string();
 	if (namePos)

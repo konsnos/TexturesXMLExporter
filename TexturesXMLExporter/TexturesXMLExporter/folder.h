@@ -30,6 +30,8 @@ public:
 	void trimSingleMatFolders();
 	/* Returns the xml of this folder. */
 	const string getXMLElement() const;
+	/* Returns the folder name. */
+	const string getName() const;
 	/* Remove the last material from the list and return it. */
 	material * popMaterial();
 	/* Iterate recursively all materials in folder to generate thumbnails. */

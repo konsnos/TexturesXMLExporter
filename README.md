@@ -15,3 +15,6 @@ A file textures.xml will be generated with all the textures and their thumbnails
 
 ## Tips
 * TexturesXMLExporter checks existing thumbnails before it creates new ones. If a thumbnail exists it doesn't create a new one. If you wish to refresh a thumbnail (eg. if you changed the source texture), you can simply delete the thumbnail and re-run the executable to re-create it.
+
+## Notes
+* Symbol & causes problems in the xml format. It is replaced by &amp; .

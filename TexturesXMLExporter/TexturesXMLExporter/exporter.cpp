@@ -163,6 +163,28 @@ const char* exporter::generate_xml()
 
 	xmlToWrite.append(rootFolder->getXMLElement());
 
+	// Check for invalid characters
+	cout << "Validating xml..." << endl;
+	{
+		size_t index = 0;
+		
+		while (true)
+		{
+			// Locate the substring to replace.
+			index = xmlToWrite.find("&", index);
+			if (index == string::npos)
+			{
+				break;
+			}
+
+			// Make the replacement.
+			xmlToWrite.replace(index, 1, "&amp;");
+
+			index += 5;
+		}
+	}
+
+	// Print stats.
 	cout << endl;
 	cout << std::setfill('-') << std::setw(38) << " " << endl;
 	cout << std::setfill(' ');

@@ -47,7 +47,7 @@ void folder::listDir()
 
 				/// Check if material exists.
 				size_t length = mats.size();
-				string matName = newMap->getMatName();
+				string matName = newMap->getName();
 				bool found = false;
 				for (size_t m = 0; m < length; m++)
 				{
@@ -133,7 +133,7 @@ const string folder::getXMLElement() const
 	// Add indents
 	for (int i = 0; i < exporter::indents; i++)
 		elem.append("\t");
-	elem += "<folder name=\"" + curPath.filename().generic_string() + "\">\n";
+	elem += "<folder name=\"" + getName() + "\">\n";
 
 	exporter::indents++;
 
@@ -152,6 +152,11 @@ const string folder::getXMLElement() const
 	elem += "</folder>\n";
 
 	return elem;
+}
+
+const string folder::getName() const
+{
+	return curPath.filename().generic_string();
 }
 
 void folder::trimSingleMatFolders()

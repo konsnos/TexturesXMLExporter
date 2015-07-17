@@ -12,8 +12,8 @@
 using namespace boost::filesystem;
 using namespace std;
 
-const int statics::sffxsArrayLen = 4;
-const string statics::imgSffxs[] = { ".png", ".jpg", ".tif", ".tga" };
+const int statics::sffxsArrayLen = 6;
+const string statics::imgSffxs[] = { ".png", ".jpg", ".tif", ".tga", ".psd", ".svg" };
 
 ////// DIFFUSE MAPS
 const int statics::difSbstrsLen = 1;
