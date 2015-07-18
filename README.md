@@ -18,3 +18,7 @@ A file textures.xml will be generated with all the textures and their thumbnails
 
 ## Notes
 * Symbol & causes problems in the xml format. It is replaced by &amp; .
+
+## Todo
+* Add local ImageMagick support. Maybe add -im 'executable path' for the imagemagic just for showcase.
+* Check how to suppress ImageMagick messages in the command line.
