@@ -52,7 +52,10 @@ const string statics::thumbnailsFolderName = "exp_thumbs";
 string* statics::thumbnailsPath = new string();
 char* statics::startingPath = "";
 
-const float statics::version = 0.1f;
+bool statics::convertLocal = false;
+char* statics::convertPath = "";
+
+const float statics::version = 1.0f;
 
 /** 
 	Checks if file extension (suffix) is part of the img suffix array.

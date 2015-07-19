@@ -108,7 +108,15 @@ void map::generateThumb()
 
 	if (!boost::filesystem::exists(thumbPath))
 	{
-		string cmmd("convert -resize 200x200 ");
+		string cmmd;
+		if (statics::convertLocal)
+		{
+			cmmd = statics::convertPath + string(" -resize 200x200 ");
+		}
+		else
+		{
+			cmmd = "convert -resize 200x200 ";
+		}
 		cmmd.append("\"").append(curPath.generic_string()).append("\" \"").append(thumbPath.generic_string()).append("\"");
 
 		system(cmmd.c_str());

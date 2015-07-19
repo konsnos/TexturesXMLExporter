@@ -65,7 +65,7 @@ exporter::exporter()
 	initializeThumbnailsPath();
 
 	ofstream myfile;
-	myfile.open("textures.xml");
+	myfile.open(rootPath->string() + "\\textures.xml");	// textures.xml file is generated at the root textures folder.
 
 	generateTreeOrder();
 
