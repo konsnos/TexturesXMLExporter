@@ -65,6 +65,8 @@ public:
 
 	/* Folder name for the thumbnails. */
 	static const string statics::thumbnailsFolderName;
+	/* Folder name for the Textures Showcaser project. This should be ignored as both this and Textures Showcaser will be in the same folder. */
+	static const string statics::texturesShowcaserFolderName;
 
 	/* Path for the thumbnails. */
 	static string* statics::thumbnailsPath;

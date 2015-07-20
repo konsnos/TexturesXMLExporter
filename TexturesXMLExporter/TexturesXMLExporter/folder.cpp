@@ -34,7 +34,7 @@ void folder::listDir()
 	{
 		if (is_directory(path))
 		{
-			if (path.filename() != statics::thumbnailsFolderName)	// Ignore thumbnails folder.
+			if (path.filename() != statics::thumbnailsFolderName && path.filename() != statics::texturesShowcaserFolderName)	// Ignore thumbnails folder.
 			{
 				folders.push_back(new folder(path));
 			}

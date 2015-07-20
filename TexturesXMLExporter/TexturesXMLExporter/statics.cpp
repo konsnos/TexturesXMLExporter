@@ -48,6 +48,7 @@ const int statics::metalSbstrsLen = 2;
 const string statics::metalSbstrs[] = { "_m.", "_MT." };
 
 const string statics::thumbnailsFolderName = "exp_thumbs";
+const string statics::texturesShowcaserFolderName = "TexturesShowcaser";
 
 string* statics::thumbnailsPath = new string();
 char* statics::startingPath = "";
