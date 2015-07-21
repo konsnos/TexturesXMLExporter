@@ -12,6 +12,23 @@ Drop the executable file outside of the folder where the textures are being kept
 TexturesXMLExporter creates a folder in the root path named exp_thumbs, which will contain all the thumbnails of all textures which will be created. All thumbnails will be in png file type and size of 200 width and 200 height.
 A file textures.xml will be generated with all the textures and their thumbnails in it.
 
+### Supported textures extensions
+* .png
+* .jpg
+* .tif
+* .tga
+* .psd
+* .svg
+
+### Supported textures suffixes
+* Diffuse: _d
+* Bump: _bmp
+* Normal: _normal, _n, _N, _nY+
+* Gloss: _g
+* Height: _h, _H
+* Specular: _s, _S
+* Roughness: _r, _R
+* Metalness: _m, _MT
 
 ### Optional command line arguments
 * -p

@@ -25,7 +25,7 @@ const string statics::bumpSbstrs[] = { "_bmp." };
 
 ////// NORMAL MAPS
 const int statics::normalSbstrsLen = 4;
-const string statics::normalSbstrs[] = { "_normal.", "_N.", "_n.", "_nY+." };
+const string statics::normalSbstrs[] = { "_normal.", "_n.", "_N.", "_nY+." };
 
 ////// GLOSSINESS MAPS
 const int statics::glossSbstrsLen = 1;
