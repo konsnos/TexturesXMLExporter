@@ -17,14 +17,11 @@ class statics
 {
 public:
 	static const bool isImgSffx(const string &sffx);
-	static const size_t isDifMap(const string &filename);
-	static const size_t isBumpMap(const string &filename);
-	static const size_t isNormalMap(const string &filename);
-	static const size_t isGlossinessMap(const string &filename);
-	static const size_t isHeightMap(const string &filename);
-	static const size_t isSpecularMap(const string &filename);
-	static const size_t isRoughnessMap(const string &filename);
-	static const size_t isMetalnessMap(const string &filename);
+	/**
+	Checks if file is a specific type of map by searching for a substring that will indicate it is.
+	Returns the index of the substring indication if it is. Returns string::npos if it isn't.
+	*/
+	static const size_t isTypeMap(const string &filename, const string*, int length);
 
 	/** Length of array containing image file extension. */
 	static const int sffxsArrayLen;

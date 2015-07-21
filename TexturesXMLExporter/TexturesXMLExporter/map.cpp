@@ -21,42 +21,42 @@ void map::registerMap()
 {
 	exporter::fileImg_count++;
 
-	if ((namePos = statics::isDifMap(curPath.filename().generic_string())) != 0)					// Diffuse maps
+	if ((namePos = statics::isTypeMap(curPath.filename().generic_string(), statics::difSbstrs, statics::difSbstrsLen)) != string::npos)				// Diffuse maps
 	{
 		exporter::fileDif_count++;
 		type.assign(mapType::Type::Diffuse);
 	}
-	else if ((namePos = statics::isBumpMap(curPath.filename().generic_string())) != 0)			// Bump
+	else if ((namePos = statics::isTypeMap(curPath.filename().generic_string(), statics::bumpSbstrs, statics::bumpSbstrsLen)) != string::npos)			// Bump
 	{
 		exporter::fileBmp_count++;
 		type.assign(mapType::Type::Bump);
 	}
-	else if ((namePos = statics::isNormalMap(curPath.filename().generic_string())) != 0)			// Normal maps
+	else if ((namePos = statics::isTypeMap(curPath.filename().generic_string(), statics::normalSbstrs, statics::normalSbstrsLen)) != string::npos)		// Normal maps
 	{
 		exporter::fileNormal_count++;
 		type.assign(mapType::Type::Normal);
 	}
-	else if ((namePos = statics::isGlossinessMap(curPath.filename().generic_string())) != 0)		// Glossiness maps
+	else if ((namePos = statics::isTypeMap(curPath.filename().generic_string(), statics::glossSbstrs, statics::glossSbstrsLen)) != string::npos)		// Glossiness maps
 	{
 		exporter::fileGloss_count++;
 		type.assign(mapType::Type::Glossiness);
 	}
-	else if ((namePos = statics::isHeightMap(curPath.filename().generic_string())) != 0)			// Height maps
+	else if ((namePos = statics::isTypeMap(curPath.filename().generic_string(), statics::heightSbstrs, statics::heightSbstrsLen)) != string::npos)		// Height maps
 	{
 		exporter::fileHeight_count++;
 		type.assign(mapType::Type::Height);
 	}
-	else if ((namePos = statics::isSpecularMap(curPath.filename().generic_string())) != 0)		// Specular maps
+	else if ((namePos = statics::isTypeMap(curPath.filename().generic_string(), statics::specSbstrs, statics::specSbstrsLen)) != string::npos)			// Specular maps
 	{
 		exporter::fileSpec_count++;
 		type.assign(mapType::Type::Specular);
 	}
-	else if ((namePos = statics::isRoughnessMap(curPath.filename().generic_string())) != 0)		// Roughness maps
+	else if ((namePos = statics::isTypeMap(curPath.filename().generic_string(), statics::roughSbstrs, statics::roughSbstrsLen)) != string::npos)		// Roughness maps
 	{
 		exporter::fileRough_count++;
 		type.assign(mapType::Type::Roughness);
 	}
-	else if ((namePos = statics::isMetalnessMap(curPath.filename().generic_string())) != 0)		// Metalness maps
+	else if ((namePos = statics::isTypeMap(curPath.filename().generic_string(), statics::metalSbstrs, statics::metalSbstrsLen)) != string::npos)		// Metalness maps
 	{
 		exporter::fileMetal_count++;
 		type.assign(mapType::Type::Metalness);
