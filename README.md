@@ -21,14 +21,16 @@ A file textures.xml will be generated with all the textures and their thumbnails
 * .svg
 
 ### Supported textures suffixes
-* Diffuse: _d
-* Bump: _bmp
-* Normal: _normal, _n, _N, _nY+
-* Gloss: _g
-* Height: _h, _H
-* Specular: _s, _S
-* Roughness: _r, _R
-* Metalness: _m, _MT
+| Map Type   | Suffixes
+| ---------- | ----------------------
+| Diffuse    | _d
+| Bump       | _bmp
+| Normal     | _normal, _n, _N, _nY+
+| Gloss      | _g
+| Height     | _h, _H
+| Specular   | _s, _S
+| Roughness  | _r, _R
+| Metalness  | m, _MT
 
 ### Optional command line arguments
 * -p
