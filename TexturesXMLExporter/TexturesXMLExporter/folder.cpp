@@ -24,8 +24,8 @@ folder::~folder()
 void folder::listDir()
 {
 	exporter::dir_count++;
-	vector<path> paths;
 
+	vector<path> paths;
 	copy(directory_iterator(curPath), directory_iterator(), back_inserter(paths));
 
 	sort(paths.begin(), paths.end(), &statics::sortByTypeNFilename);
@@ -76,7 +76,7 @@ void folder::listDir()
 	}
 }
 
-material * folder::popMaterial()
+material* folder::popMaterial()
 {
 	if (mats.size() > 0)
 	{
@@ -90,7 +90,7 @@ material * folder::popMaterial()
 	}
 }
 
-material * folder::getMaterials()
+material* folder::getMaterials()
 {
 	return mats[0];
 }
@@ -112,7 +112,7 @@ const int folder::getMatsRecAmount() const
 	return amount;
 }
 
-void folder::addMat(material * newMat)
+void folder::addMat(material* newMat)
 {
 	mats.push_back(newMat);
 }

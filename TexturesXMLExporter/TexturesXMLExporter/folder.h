@@ -8,24 +8,25 @@
 #include <string>
 
 #include "material.h"
+#include "ixmlexpressed.h"
 
 using namespace std;
 
 
-class folder
+class folder : Ixmlexpressed
 {
 public:
 	folder(path& refPath);
 	~folder();
 
 	/* Returns the materials contained in this directory. */
-	material * getMaterials();
+	material* getMaterials();
 	/* Returns the count of materials contained in this directory. */
 	const int getMatsAmount() const;
 	/* Returns the count of materials contained in this directory recursively. */
 	const int getMatsRecAmount() const;
 	/* Adds a material in the list of materials of this folder. */
-	void addMat(material * newMat);
+	void addMat(material* newMat);
 	/* Trims single material folders. Moves the material to the parent one. */
 	void trimSingleMatFolders();
 	/* Returns the xml of this folder. */
@@ -33,7 +34,7 @@ public:
 	/* Returns the folder name. */
 	const string getName() const;
 	/* Remove the last material from the list and return it. */
-	material * popMaterial();
+	material* popMaterial();
 	/* Iterate recursively all materials in folder to generate thumbnails. */
 	void iterateMatsForThumbs();
 	/* Returns the path of the folder. */

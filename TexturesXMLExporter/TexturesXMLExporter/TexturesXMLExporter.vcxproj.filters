@@ -56,5 +56,8 @@
     <ClCompile Include="folder.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ixmlexpressed.h">
+      <Filter>Header Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

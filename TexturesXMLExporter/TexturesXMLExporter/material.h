@@ -8,18 +8,19 @@
 #include <vector>
 
 #include "map.h"
+#include "ixmlexpressed.h"
 
 using namespace std;
 
 /* A material is a list of maps. */
-class material
+class material : Ixmlexpressed
 {
 public:
-	material(const string &newName, map * newMap);
+	material(const string& newName, map* newMap);
 	~material();
 
 	/* Adds a map to the list of maps for this material. */
-	void addMap(map * newMap);
+	void addMap(map* newMap);
 	/* Generate thumbs from maps. */
 	void generateMapsThumbs();
 	/* Returns the xml string of this material. */

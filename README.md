@@ -21,16 +21,17 @@ A file textures.xml will be generated with all the textures and their thumbnails
 * .svg
 
 ### Supported textures suffixes
-| Map Type   | Suffixes
-| ---------- | ----------------------
-| Diffuse    | _d
-| Bump       | _bmp
-| Normal     | _normal, _n, _N, _nY+
-| Gloss      | _g
-| Height     | _h, _H
-| Specular   | _s, _S
-| Roughness  | _r, _R
-| Metalness  | m, _MT
+| Map Type   | Suffixes              |
+| ---------- | ----------------------|
+| Diffuse    | _d                    |
+| Bump       | _bmp, _bump           |
+| Normal     | _normal, _n, _N, _nY+ |
+| Gloss      | _g, _G                |
+| Height     | _h, _H                |
+| Specular   | _s, _S, _spec         |
+| Roughness  | _r, _R                |
+| Metalness  | m, M, _MT             |
+| Emissive   | e, E                  |
 
 ### Optional command line arguments
 * -p
@@ -55,6 +56,9 @@ A file textures.xml will be generated with all the textures and their thumbnails
 
 
 ## Todo
+* What are the suffixes _t, _p?
+* Maps with the same name with the material should be marked diffuse.
+* Print a separate file for log.
 * Check how to suppress ImageMagick messages in the command line.
 * Copyright
 * License

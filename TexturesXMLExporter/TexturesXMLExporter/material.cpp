@@ -5,7 +5,7 @@
 #include "material.h"
 #include "exporter.h"
 
-material::material(const string &newName, map * newMap)
+material::material(const string &newName, map* newMap)
 	:name(newName)
 {
 	maps.push_back(newMap);

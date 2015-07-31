@@ -21,32 +21,36 @@ const int statics::difSbstrsLen = 1;
 const string statics::difSbstrs[] = { "_d" };
 
 ////// BUMP MAPS
-const int statics::bumpSbstrsLen = 1;
-const string statics::bumpSbstrs[] = { "_bmp" };
+const int statics::bumpSbstrsLen = 2;
+const string statics::bumpSbstrs[] = { "_bmp", "bump" };
 
 ////// NORMAL MAPS
 const int statics::normalSbstrsLen = 4;
 const string statics::normalSbstrs[] = { "_normal", "_n", "_N", "_nY+" };
 
 ////// GLOSSINESS MAPS
-const int statics::glossSbstrsLen = 1;
-const string statics::glossSbstrs[] = { "_g" };
+const int statics::glossSbstrsLen = 2;
+const string statics::glossSbstrs[] = { "_g", "_G" };
 
 ////// HEIGHT MAPS
 const int statics::heightSbstrsLen = 2;
 const string statics::heightSbstrs[] = { "_h", "_H" };
 
 ////// SPECULAR MAPS
-const int statics::specSbstrsLen = 2;
-const string statics::specSbstrs[] = { "_s", "_S" };
+const int statics::specSbstrsLen = 3;
+const string statics::specSbstrs[] = { "_s", "_S", "_spec" };
 
 ////// ROUGHNESS MAPS
 const int statics::roughSbstrsLen = 2;
 const string statics::roughSbstrs[] = { "_r", "_R" };
 
 ////// METALNESS MAPS
-const int statics::metalSbstrsLen = 2;
-const string statics::metalSbstrs[] = { "_m", "_MT" };
+const int statics::metalSbstrsLen = 3;
+const string statics::metalSbstrs[] = { "_m", "_M", "_MT" };
+
+////// EMISSIVE MAPS
+const int statics::emissiveSbstrsLen = 2;
+const string statics::emissiveSbstrs[] = { "_e", "_E" };
 
 const string statics::thumbnailsFolderName = "exp_thumbs";
 const string statics::texturesShowcaserFolderName = "TexturesShowcaser";
@@ -63,7 +67,7 @@ const float statics::version = 1.0f;
 	Checks if file extension (suffix) is part of the img suffix array.
 	Returns true if it is.
 */
-const bool statics::isImgSffx(const string &sffx)
+const bool statics::isImgSffx(const string& sffx)
 {
 	for (int i = 0; i < sffxsArrayLen; i++)
 	{
@@ -76,7 +80,7 @@ const bool statics::isImgSffx(const string &sffx)
 	return false;
 }
 
-const size_t statics::isTypeMap(const string &filename, const string* substrs, int length)
+const size_t statics::isTypeMap(const string& filename, const string* substrs, int length)
 {
 	size_t pos;
 	size_t findIndex;
@@ -121,7 +125,7 @@ const size_t statics::isTypeMap(const string &filename, const string* substrs, i
 	return string::npos;
 }
 
-bool statics::sortByTypeNFilename(const path &a, const path &b)
+bool statics::sortByTypeNFilename(const path& a, const path& b)
 {
 	if (detail::status(a).type() == detail::status(b).type())
 	{

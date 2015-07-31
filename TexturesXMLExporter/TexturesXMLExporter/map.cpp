@@ -61,6 +61,11 @@ void map::registerMap()
 		exporter::fileMetal_count++;
 		type.assign(mapType::Type::Metalness);
 	}
+	else if ((namePos = statics::isTypeMap(curPath.filename().generic_string(), statics::emissiveSbstrs, statics::emissiveSbstrsLen)) != string::npos)		// Emissive maps
+	{
+		exporter::fileMetal_count++;
+		type.assign(mapType::Type::Emissive);
+	}
 	else
 	{
 		namePos = statics::isImgSffx(curPath.filename().generic_string());

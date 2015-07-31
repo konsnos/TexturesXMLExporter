@@ -22,6 +22,7 @@ public:
 		Specular,
 		Roughness,
 		Metalness,
+		Emissive,
 		Other
 	};
 

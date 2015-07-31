@@ -9,12 +9,13 @@
 #include "boost\filesystem\path.hpp"
 
 #include "mapType.h"
+#include "ixmlexpressed.h"
 
 using namespace std;
 using namespace boost::filesystem;
 
 /* Contains information about a file which is a texture for a material. */
-class map
+class map : Ixmlexpressed
 {
 public:
 	map(path &);

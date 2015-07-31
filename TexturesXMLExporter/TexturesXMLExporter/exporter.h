@@ -48,9 +48,9 @@ private:
 	void initializeStartingDir();
 
 	/* The staring folder for the textures. */
-	folder * rootFolder;
+	folder* rootFolder;
 	/* The starting path of the folders. */
-	path * rootPath;
+	path* rootPath;
 
 	string xmlToWrite;
 };
