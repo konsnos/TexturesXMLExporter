@@ -84,14 +84,6 @@ const mapType map::getType() const
 	return type;
 }
 
-const string map::getXMLElement() const
-{
-	string elem = getType().getString();
-	string xmlElem("<map type=\"" + elem + "\"" + " thumb=\"" + thumbPath.string() + "\">" + curPath.string() + "</map>");
-
-	return xmlElem;
-}
-
 const string map::getName() const
 {
 	string filename = curPath.filename().generic_string();
@@ -126,4 +118,14 @@ void map::generateThumb()
 
 		system(cmmd.c_str());
 	}
+}
+
+const path map::getThumbPath() const
+{
+	return thumbPath;
+}
+
+const path map::getCurPath() const
+{
+	return curPath;
 }

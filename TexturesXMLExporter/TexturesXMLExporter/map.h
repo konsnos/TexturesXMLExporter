@@ -9,26 +9,27 @@
 #include "boost\filesystem\path.hpp"
 
 #include "mapType.h"
-#include "ixmlexpressed.h"
 
 using namespace std;
 using namespace boost::filesystem;
 
 /* Contains information about a file which is a texture for a material. */
-class map : Ixmlexpressed
+class map
 {
 public:
 	map(path &);
 	~map();
 
-	/* Returns the xml string of this map. */
-	const string getXMLElement() const;
 	/* Returns the material name without any file extensions or map type substrings. */
 	const string getName() const;
 	/* Generates thumbnail for this map if it doesn't exist. */
 	void generateThumb();
 	/* Returns the string of the map type. */
 	const mapType getType() const;
+	/* Returns the thumbnail path variable. */
+	const path getThumbPath() const;
+	/* Returns map full path variable. */
+	const path getCurPath() const;
 
 private:
 	size_t namePos;

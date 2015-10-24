@@ -95,12 +95,17 @@ material* folder::getMaterials()
 	return mats[0];
 }
 
-const int folder::getMatsAmount() const
+const size_t folder::getMatsAmount() const
 {
 	return mats.size();
 }
 
-const int folder::getMatsRecAmount() const
+const size_t folder::getFoldersAmount() const
+{
+	return folders.size();
+}
+
+const size_t folder::getMatsRecAmount() const
 {
 	int amount = 0;
 
@@ -110,6 +115,16 @@ const int folder::getMatsRecAmount() const
 		amount += folder->getMatsRecAmount();
 
 	return amount;
+}
+
+const material& folder::getMaterial(const int index) const
+{
+	return *mats[index];
+}
+
+const folder& folder::getFolder(const int index) const
+{
+	return *folders[index];
 }
 
 void folder::addMat(material* newMat)
@@ -124,34 +139,6 @@ void folder::iterateMatsForThumbs()
 
 	for (auto& mat : mats)
 		mat->generateMapsThumbs();
-}
-
-const string folder::getXMLElement() const
-{
-	string elem;
-
-	// Add indents
-	for (int i = 0; i < exporter::indents; i++)
-		elem.append("\t");
-	elem += "<folder name=\"" + getName() + "\">\n";
-
-	exporter::indents++;
-
-	/// Add subdirs
-	for (auto& folder : folders)
-		elem += folder->getXMLElement();
-
-	/// Add materials
-	for (auto& mat : mats)
-		elem += mat->getXMLElement();
-
-	exporter::indents--;
-
-	for (int i = 0; i < exporter::indents; i++)
-		elem.append("\t");
-	elem += "</folder>\n";
-
-	return elem;
 }
 
 const string folder::getName() const

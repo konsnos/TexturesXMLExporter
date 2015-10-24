@@ -14,6 +14,9 @@
 #include "Statics.h"
 #include "folder.h"
 
+#include "exporters\istringexporter.h"
+#include "exporters\xmlexporter.h"
+
 #include "boost\filesystem\path.hpp"
 #include "boost\filesystem\operations.hpp"
 
@@ -25,6 +28,7 @@
 
 using namespace std;
 using namespace boost::filesystem;
+using namespace exporters;
 
 unsigned long exporter::fileImg_count = 0;
 unsigned long exporter::fileOther_count = 0;
@@ -159,9 +163,13 @@ const char* exporter::generate_xml()
 		xmlToWrite.append("<Texs path=\"" + rootFolder->getPath_Parent() + "\">\n");
 	}
 
-	indents = 1;
+	IStringExporter* exporter = new xmlexporter();
+	xmlToWrite.append(exporter->getStringElement(*rootFolder));
+	delete exporter;
 
-	xmlToWrite.append(rootFolder->getXMLElement());
+	//indents = 1;
+
+	//xmlToWrite.append(rootFolder->getXMLElement());
 
 	// Check for invalid characters
 	cout << "Validating xml..." << endl;
@@ -173,9 +181,7 @@ const char* exporter::generate_xml()
 			// Locate the substring to replace.
 			index = xmlToWrite.find("&", index);
 			if (index == string::npos)
-			{
 				break;
-			}
 
 			// Make the replacement.
 			xmlToWrite.replace(index, 1, "&amp;");

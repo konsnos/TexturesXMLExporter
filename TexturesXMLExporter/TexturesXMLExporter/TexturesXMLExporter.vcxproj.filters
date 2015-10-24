@@ -33,6 +33,12 @@
     <ClInclude Include="folder.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="exporters\istringexporter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="exporters\xmlexporter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="exporter.cpp">
@@ -56,8 +62,8 @@
     <ClCompile Include="folder.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ixmlexpressed.h">
-      <Filter>Header Files</Filter>
+    <ClCompile Include="exporters\xmlexporter.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

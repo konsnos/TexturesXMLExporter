@@ -13,20 +13,22 @@
   <ItemGroup>
     <ClInclude Include="exporter.h" />
     <ClInclude Include="folder.h" />
+    <ClInclude Include="exporters\istringexporter.h" />
     <ClInclude Include="map.h" />
     <ClInclude Include="mapType.h" />
     <ClInclude Include="material.h" />
     <ClInclude Include="statics.h" />
+    <ClInclude Include="exporters\xmlexporter.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="exporter.cpp" />
     <ClCompile Include="folder.cpp" />
-    <ClCompile Include="ixmlexpressed.h" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="map.cpp" />
     <ClCompile Include="mapType.cpp" />
     <ClCompile Include="material.cpp" />
     <ClCompile Include="statics.cpp" />
+    <ClCompile Include="exporters\xmlexporter.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{91F200CF-DAA9-4ADA-869F-521A91FCFA3C}</ProjectGuid>
