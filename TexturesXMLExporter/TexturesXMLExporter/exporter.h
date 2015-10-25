@@ -47,12 +47,14 @@ private:
 	void initializeThumbnailsPath();
 	/* Initializes the starting path. */
 	void initializeStartingDir();
+	/* Prints stats to the command line. */
+	void printStats() const;
+	/* Saves stats of run to a file in the folder the program exists. */
+	void saveStats();
 
 	/* The staring folder for the textures. */
 	folder* rootFolder;
 	/* The starting path of the folders. */
 	path* rootPath;
-
-	string xmlToWrite;
 };
 

@@ -71,6 +71,8 @@ public:
 	/* Path for the thumbnails. */
 	static string* statics::thumbnailsPath;
 
+	/* Current path this program is running from. */
+	static char* currentPath;
 	/* Starting path to search for textures. */
 	static char* startingPath;
 

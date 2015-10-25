@@ -55,6 +55,7 @@ const string statics::emissiveSbstrs[] = { "_e", "_E" };
 const string statics::thumbnailsFolderName = "exp_thumbs";
 const string statics::texturesShowcaserFolderName = "TexturesShowcaser";
 
+char* statics::currentPath = "";
 string* statics::thumbnailsPath = new string();
 char* statics::startingPath = "";
 

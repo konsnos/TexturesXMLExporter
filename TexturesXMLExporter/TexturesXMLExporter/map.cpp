@@ -107,13 +107,10 @@ void map::generateThumb()
 	{
 		string cmmd;
 		if (statics::convertLocal)
-		{
 			cmmd = statics::convertPath + string(" -resize 200x200 ");
-		}
 		else
-		{
 			cmmd = "convert -resize 200x200 ";
-		}
+
 		cmmd.append("\"").append(curPath.generic_string()).append("\" \"").append(thumbPath.generic_string()).append("\"");
 
 		system(cmmd.c_str());
