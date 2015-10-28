@@ -2,6 +2,10 @@
 * <author>Konstantinos Egkarchos</author>
 * <contact>konsnosl@gmail.com</contact>
 */
+#ifdef _MSC_VER
+#define _CRT_SECURE_NO_WARNINGS
+#endif
+
 #include <string>
 #include <cctype>
 
@@ -124,6 +128,13 @@ const size_t statics::isTypeMap(const string& filename, const string* substrs, i
 	}
 	
 	return string::npos;
+}
+
+tm statics::GetLocalTime()
+{
+	time_t t = time(NULL);
+
+	return *localtime(&t);
 }
 
 bool statics::sortByTypeNFilename(const path& a, const path& b)

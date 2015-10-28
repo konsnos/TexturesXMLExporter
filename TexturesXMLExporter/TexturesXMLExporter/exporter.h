@@ -36,9 +36,10 @@ public:
 
 	static int indents;
 private:
+	void initializeStatsCounts();
 	const char* generate_xml();
 	/* Sets width for the line in order for the text to be ordered in the command line. */
-	void printFormatted(char* chars, int count) const;
+	void printFormatted(ostream& stream, char* chars, int count) const;
 	/* Generate tree folder list with all the textures in them. */
 	void generateTreeOrder();
 	/* Generates thumbnails for all maps in materials. */
@@ -48,9 +49,9 @@ private:
 	/* Initializes the starting path. */
 	void initializeStartingDir();
 	/* Prints stats to the command line. */
-	void printStats() const;
+	void printStats(double timeDuration) const;
 	/* Saves stats of run to a file in the folder the program exists. */
-	void saveStats();
+	void saveStats(double timeDuration, clock_t startTime);
 
 	/* The staring folder for the textures. */
 	folder* rootFolder;

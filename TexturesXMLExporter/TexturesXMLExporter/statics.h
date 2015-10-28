@@ -23,6 +23,9 @@ public:
 	*/
 	static const size_t isTypeMap(const string& filename, const string* substrs, int length);
 
+	/* Returns local time. */
+	static tm GetLocalTime();
+
 	/** Length of array containing image file extension. */
 	static const int sffxsArrayLen;
 	/** Possible image file suffixes. */

@@ -72,16 +72,8 @@ int main(int argc, char* argv[])
 	handleCMDArguments(argc, argv);
 
 	cout << "Starting Textures XML Exporter..." << endl << endl;
-	
-	std::clock_t start;
-	double duration;
-
-	start = std::clock();
 
 	exporter exp;
-
-	duration = (std::clock() - start) / (double)CLOCKS_PER_SEC;
-	cout << "\nProgram finished after " << duration << " seconds." << endl << endl;
 
 	cin.get();
 
