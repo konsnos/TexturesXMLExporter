@@ -37,7 +37,7 @@ public:
 	static int indents;
 private:
 	void initializeStatsCounts();
-	const char* generate_xml();
+	const string generate_xml();
 	/* Sets width for the line in order for the text to be ordered in the command line. */
 	void printFormatted(ostream& stream, char* chars, int count) const;
 	/* Generate tree folder list with all the textures in them. */

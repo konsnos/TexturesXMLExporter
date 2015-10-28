@@ -130,9 +130,14 @@ const size_t statics::isTypeMap(const string& filename, const string* substrs, i
 	return string::npos;
 }
 
-tm statics::GetLocalTime()
+const tm statics::GetLocalTime()
 {
 	time_t t = time(NULL);
+
+	/*tm time;
+	localtime_s(&time, &t);
+
+	return time;*/
 
 	return *localtime(&t);
 }
