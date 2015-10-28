@@ -61,8 +61,7 @@ exporter::exporter()
 	generateThumbs();
 
 	{
-		ofstream fileTexsExport;
-		fileTexsExport.open(rootPath->string() + "\\textures.xml");	// textures.xml file is generated at the root textures folder.
+		ofstream fileTexsExport(rootPath->string() + "\\textures.xml");	// textures.xml file is generated at the root textures folder.
 
 		fileTexsExport << generate_xml();
 		fileTexsExport.close();
@@ -248,12 +247,10 @@ void exporter::printStats(double timeDuration) const
 
 void exporter::saveStats(double timeDuration, clock_t startTime)
 {
-	ofstream fileLog;
-
 	const tm* timePtr = &statics::GetLocalTime();
 	
 	// Generate a log file with the date on its name.
-	fileLog.open(string(statics::currentPath) + "\\log_" + to_string(timePtr->tm_year + 1900) + "_" + to_string(timePtr->tm_yday) + "_" + to_string(timePtr->tm_hour) + "_" + to_string(timePtr->tm_min) + "_" + to_string(timePtr->tm_sec) + ".txt");
+	ofstream fileLog(string(statics::currentPath) + "\\log_" + to_string(timePtr->tm_year + 1900) + "_" + to_string(timePtr->tm_yday) + "_" + to_string(timePtr->tm_hour) + "_" + to_string(timePtr->tm_min) + "_" + to_string(timePtr->tm_sec) + ".txt");
 
 	cout << "Generating log file..." << endl;
 
