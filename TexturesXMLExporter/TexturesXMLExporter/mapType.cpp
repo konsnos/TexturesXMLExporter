@@ -11,7 +11,6 @@ mapType::mapType()
 {
 }
 
-
 mapType::~mapType()
 {
 }

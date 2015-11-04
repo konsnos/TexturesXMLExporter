@@ -167,12 +167,12 @@ const wstring exporter::generate_xml()
 	{
 		const tm* timePtr = &statics::GetLocalTime();
 
-		char buffer[50];
+		wchar_t buffer[50];
 
-		strftime(buffer, 50, "%A %d %B %Y %X", timePtr);
+		wcsftime(buffer, 50, L"%A %d %B %Y %X", timePtr);
 
 		stringToWrite.append(L"<!-- This xml was exported at ");
-		//stringToWrite.append(buffer); //TODO: fix time
+		stringToWrite.append(buffer);
 		stringToWrite.append(L" -->\n");
 		stringToWrite.append(L"<Texs path=\"" + rootFolder->getPath_Parent() + L"\">\n");
 	}
@@ -258,16 +258,16 @@ void exporter::saveStats(double timeDuration, clock_t startTime)
 
 	// Write time to the file.
 	{
-		char buffer[50];
+		wchar_t buffer[50];
 
-		strftime(buffer, 50, "%A %d %B %Y %X", timePtr);
+		wcsftime(buffer, 50, L"%A %d %B %Y %X", timePtr);
 
 		stringToWrite.append(L"This log was exported at ");
-		//stringToWrite.append(buffer); //TODO: write time to file.
+		stringToWrite.append(buffer);
 		stringToWrite.append(L" \n");
 	}
 
-	fileLog << stringToWrite;
+	fileLog << statics::to_utf8(stringToWrite);
 
 	fileLog << endl;
 	fileLog << std::setfill('-') << std::setw(38) << " " << endl;
