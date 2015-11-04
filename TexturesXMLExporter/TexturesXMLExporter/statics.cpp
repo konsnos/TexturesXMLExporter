@@ -8,6 +8,7 @@
 
 #include <string>
 #include <cctype>
+#include <Windows.h>
 
 #include "statics.h"
 
@@ -18,53 +19,53 @@ using namespace boost::filesystem;
 using namespace std;
 
 const int statics::sffxsArrayLen = 7;
-const string statics::imgSffxs[] = { ".png", ".jpg", ".tif", ".tga", ".psd", ".svg", ".dds" };
+const wstring statics::imgSffxs[] = { L".png", L".jpg", L".tif", L".tga", L".psd", L".svg", L".dds" };
 
 ////// DIFFUSE MAPS
 const int statics::difSbstrsLen = 1;
-const string statics::difSbstrs[] = { "_d" };
+const wstring statics::difSbstrs[] = { L"_d" };
 
 ////// BUMP MAPS
 const int statics::bumpSbstrsLen = 2;
-const string statics::bumpSbstrs[] = { "_bmp", "bump" };
+const wstring statics::bumpSbstrs[] = { L"_bmp", L"bump" };
 
 ////// NORMAL MAPS
 const int statics::normalSbstrsLen = 4;
-const string statics::normalSbstrs[] = { "_normal", "_n", "_N", "_nY+" };
+const wstring statics::normalSbstrs[] = { L"_normal", L"_n", L"_N", L"_nY+" };
 
 ////// GLOSSINESS MAPS
 const int statics::glossSbstrsLen = 2;
-const string statics::glossSbstrs[] = { "_g", "_G" };
+const wstring statics::glossSbstrs[] = { L"_g", L"_G" };
 
 ////// HEIGHT MAPS
 const int statics::heightSbstrsLen = 2;
-const string statics::heightSbstrs[] = { "_h", "_H" };
+const wstring statics::heightSbstrs[] = { L"_h", L"_H" };
 
 ////// SPECULAR MAPS
 const int statics::specSbstrsLen = 3;
-const string statics::specSbstrs[] = { "_s", "_S", "_spec" };
+const wstring statics::specSbstrs[] = { L"_s", L"_S", L"_spec" };
 
 ////// ROUGHNESS MAPS
 const int statics::roughSbstrsLen = 2;
-const string statics::roughSbstrs[] = { "_r", "_R" };
+const wstring statics::roughSbstrs[] = { L"_r", L"_R" };
 
 ////// METALNESS MAPS
 const int statics::metalSbstrsLen = 3;
-const string statics::metalSbstrs[] = { "_m", "_M", "_MT" };
+const wstring statics::metalSbstrs[] = { L"_m", L"_M", L"_MT" };
 
 ////// EMISSIVE MAPS
 const int statics::emissiveSbstrsLen = 2;
-const string statics::emissiveSbstrs[] = { "_e", "_E" };
+const wstring statics::emissiveSbstrs[] = { L"_e", L"_E" };
 
-const string statics::thumbnailsFolderName = "exp_thumbs";
-const string statics::texturesShowcaserFolderName = "TexturesShowcaser";
+const wstring statics::thumbnailsFolderName = L"exp_thumbs";
+const wstring statics::texturesShowcaserFolderName = L"TexturesShowcaser";
 
-char* statics::currentPath = "";
-string* statics::thumbnailsPath = new string();
-char* statics::startingPath = "";
+wchar_t* statics::currentPath = L"";
+wstring* statics::thumbnailsPath = new wstring();
+wchar_t* statics::startingPath = L"";
 
 bool statics::convertLocal = false;
-char* statics::convertPath = "";
+wchar_t* statics::convertPath = L"";
 
 const float statics::version = 1.0f;
 
@@ -72,7 +73,7 @@ const float statics::version = 1.0f;
 	Checks if file extension (suffix) is part of the img suffix array.
 	Returns true if it is.
 */
-const bool statics::isImgSffx(const string& sffx)
+const bool statics::isImgSffx(const wstring& sffx)
 {
 	for (int i = 0; i < sffxsArrayLen; i++)
 	{
@@ -85,7 +86,7 @@ const bool statics::isImgSffx(const string& sffx)
 	return false;
 }
 
-const size_t statics::isTypeMap(const string& filename, const string* substrs, int length)
+const size_t statics::isTypeMap(const wstring& filename, const wstring* substrs, int length)
 {
 	size_t pos;
 	size_t findIndex;
@@ -99,7 +100,7 @@ const size_t statics::isTypeMap(const string& filename, const string* substrs, i
 
 		while (notInEnd)
 		{
-			if ((pos = filename.find(substrs[i], pos)) != string::npos)
+			if ((pos = filename.find(substrs[i], pos)) != wstring::npos)
 			{
 				isStop = true;
 				findIndex = pos + substrs[i].length();
@@ -127,7 +128,7 @@ const size_t statics::isTypeMap(const string& filename, const string* substrs, i
 		}
 	}
 	
-	return string::npos;
+	return wstring::npos;
 }
 
 const tm statics::GetLocalTime()
@@ -154,4 +155,21 @@ bool statics::sortByTypeNFilename(const path& a, const path& b)
 		return true;
 
 	return false;
+}
+
+string statics::to_utf8(const wchar_t* buffer, int len)
+{
+	int nChars = ::WideCharToMultiByte(CP_UTF8, 0, buffer, len, NULL, 0, NULL, NULL);
+	if (nChars == 0) return "";
+
+	string newbuffer;
+	newbuffer.resize(nChars);
+	::WideCharToMultiByte(CP_UTF8, 0, buffer, len, const_cast< char* >(newbuffer.c_str()), nChars, NULL, NULL);
+
+	return newbuffer;
+}
+
+string statics::to_utf8(const std::wstring& str)
+{
+	return to_utf8(str.c_str(), (int)str.size());
 }

@@ -5,7 +5,7 @@
 #include "material.h"
 #include "exporter.h"
 
-material::material(const string &newName, map* newMap)
+material::material(const wstring &newName, map* newMap)
 	:name(newName)
 {
 	maps.push_back(newMap);
@@ -27,7 +27,7 @@ void material::generateMapsThumbs()
 		map->generateThumb();
 }
 
-const string material::getName() const
+const wstring material::getName() const
 {
 	return name;
 }

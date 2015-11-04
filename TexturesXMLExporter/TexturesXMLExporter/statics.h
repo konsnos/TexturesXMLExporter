@@ -16,12 +16,15 @@ using namespace std;
 class statics
 {
 public:
-	static const bool isImgSffx(const string& sffx);
+	static const bool isImgSffx(const wstring& sffx);
 	/**
 	Checks if file is a specific type of map by searching for a substring that will indicate it is.
-	Returns the index of the substring indication if it is. Returns string::npos if it isn't.
+	Returns the index of the substring indication if it is. Returns wstring::npos if it isn't.
 	*/
-	static const size_t isTypeMap(const string& filename, const string* substrs, int length);
+	static const size_t isTypeMap(const wstring& filename, const wstring* substrs, int length);
+
+	static string statics::to_utf8(const wchar_t* buffer, int len);
+	static string statics::to_utf8(const std::wstring& str);
 
 	/* Returns local time. */
 	static const tm GetLocalTime();
@@ -29,60 +32,60 @@ public:
 	/** Length of array containing image file extension. */
 	static const int sffxsArrayLen;
 	/** Possible image file suffixes. */
-	static const string imgSffxs[];
+	static const wstring imgSffxs[];
 
 	/// Diffuse
 	static const int difSbstrsLen;
-	static const string difSbstrs[];
+	static const wstring difSbstrs[];
 
 	/** Length of array containing bump file extensions. */
 	static const int bumpSbstrsLen;
 	/** Bump map substrings. */
-	static const string bumpSbstrs[];
+	static const wstring bumpSbstrs[];
 
 	/** Length of array containing normal file extensions. */
 	static const int normalSbstrsLen;
 	/** Normal map substrings. */
-	static const string normalSbstrs[];
+	static const wstring normalSbstrs[];
 
 	static const int glossSbstrsLen;
-	static const string glossSbstrs[];
+	static const wstring glossSbstrs[];
 
 	static const int heightSbstrsLen;
-	static const string heightSbstrs[];
+	static const wstring heightSbstrs[];
 
 	static const int specSbstrsLen;
-	static const string specSbstrs[];
+	static const wstring specSbstrs[];
 
 	static const int roughSbstrsLen;
-	static const string roughSbstrs[];
+	static const wstring roughSbstrs[];
 
 	static const int metalSbstrsLen;
-	static const string metalSbstrs[];
+	static const wstring metalSbstrs[];
 
 	static const int emissiveSbstrsLen;
-	static const string emissiveSbstrs[];
+	static const wstring emissiveSbstrs[];
 
 	/* Compares two paths for their type, and if the same compares their file name. */
 	static bool sortByTypeNFilename(const path& a, const path& b);
 
 	/* Folder name for the thumbnails. */
-	static const string statics::thumbnailsFolderName;
+	static const wstring statics::thumbnailsFolderName;
 	/* Folder name for the Textures Showcaser project. This should be ignored as both this and Textures Showcaser will be in the same folder. */
-	static const string statics::texturesShowcaserFolderName;
+	static const wstring statics::texturesShowcaserFolderName;
 
 	/* Path for the thumbnails. */
-	static string* statics::thumbnailsPath;
+	static wstring* statics::thumbnailsPath;
 
 	/* Current path this program is running from. */
-	static char* currentPath;
+	static wchar_t* currentPath;
 	/* Starting path to search for textures. */
-	static char* startingPath;
+	static wchar_t* startingPath;
 
 	/* If set to true then the program will search for the convert program in the path given. */
 	static bool convertLocal;
 	/* Path for the convert program (ImageMagick).*/
-	static char* convertPath;
+	static wchar_t* convertPath;
 
 	/* Version of this program. */
 	static const float version;

@@ -30,14 +30,14 @@ public:
 	~mapType();
 
 	void assign(Type newType);
-	/* Returns the string of the type. */
-	const string getString() const;
+	/* Returns the wstring of the type. */
+	const wstring getString() const;
 	/* Returns the type */
 	const Type getType() const;
 	
 private:
 	Type type;
 
-	static const string types[];
+	static const wstring types[];
 };
 

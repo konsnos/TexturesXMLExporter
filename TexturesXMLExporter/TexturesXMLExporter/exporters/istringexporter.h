@@ -18,11 +18,11 @@ namespace exporters
 	{
 	public:
 		virtual ~IStringExporter(){ };
-		/* Creates a string representation of a map and returns it. */
-		virtual const string getStringElement(const map&) = 0;
-		/* Creates a string representation of a material and returns it. */
-		virtual const string getStringElement(const material&) = 0;
-		/* Creates a string representation of a folder and returns it. */
-		virtual const string getStringElement(const folder&) = 0;
+		/* Creates a wstring representation of a map and returns it. */
+		virtual const wstring getStringElement(const map&) = 0;
+		/* Creates a wstring representation of a material and returns it. */
+		virtual const wstring getStringElement(const material&) = 0;
+		/* Creates a wstring representation of a folder and returns it. */
+		virtual const wstring getStringElement(const folder&) = 0;
 	};
 }

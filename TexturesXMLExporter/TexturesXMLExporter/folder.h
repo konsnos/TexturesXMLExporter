@@ -31,15 +31,15 @@ public:
 	/* Trims single material folders. Moves the material to the parent one. */
 	void trimSingleMatFolders();
 	/* Returns the folder name. */
-	const string getName() const;
+	const wstring getName() const;
 	/* Remove the last material from the list and return it. */
 	material* popMaterial();
 	/* Iterate recursively all materials in folder to generate thumbnails. */
 	void iterateMatsForThumbs();
 	/* Returns the path of the folder. */
-	string getPath() const;
+	wstring getPath() const;
 	/* Returns the parent path of the folder. */
-	string getPath_Parent() const;
+	wstring getPath_Parent() const;
 	/* Returns a reference to a material at a specified index. */
 	const material& getMaterial(const int index) const;
 	/* Returns a reference to a subfolder at a specified index. */

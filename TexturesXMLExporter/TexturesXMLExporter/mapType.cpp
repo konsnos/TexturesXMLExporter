@@ -4,7 +4,7 @@
 */
 #include "mapType.h"
 
-const string mapType::types[] = { "diffuse", "bump", "normal", "glossiness", "height", "specular", "roughness", "metalness", "other" };
+const wstring mapType::types[] = { L"diffuse", L"bump", L"normal", L"glossiness", L"height", L"specular", L"roughness", L"metalness", L"other" };
 
 mapType::mapType()
 	:type(Other)
@@ -21,7 +21,7 @@ void mapType::assign(Type newType)
 	type = newType;
 }
 
-const string mapType::getString() const
+const wstring mapType::getString() const
 {
 	return types[type];
 }

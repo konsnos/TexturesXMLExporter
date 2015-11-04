@@ -21,10 +21,10 @@ public:
 	~map();
 
 	/* Returns the material name without any file extensions or map type substrings. */
-	const string getName() const;
+	const wstring getName() const;
 	/* Generates thumbnail for this map if it doesn't exist. */
 	void generateThumb();
-	/* Returns the string of the map type. */
+	/* Returns the wstring of the map type. */
 	const mapType getType() const;
 	/* Returns the thumbnail path variable. */
 	const path getThumbPath() const;
@@ -33,7 +33,7 @@ public:
 
 private:
 	size_t namePos;
-	/* Type of the map that is to be put as the element of the xml string. */
+	/* Type of the map that is to be put as the element of the xml wstring. */
 	mapType type;
 	/* File's full path. */
 	path curPath;

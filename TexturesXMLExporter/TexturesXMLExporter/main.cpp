@@ -10,9 +10,9 @@
 using namespace std;
 
 /* Stores parameters passed from the command line. */
-void handleCMDArguments(int argc, char* argv[])
+void handleCMDArguments(int argc, wchar_t* argv[])
 {
-	string arg;
+	wstring arg;
 	for (int i = 1; i < argc; i++)
 	{
 		arg = argv[i];
@@ -67,7 +67,7 @@ void handleCMDArguments(int argc, char* argv[])
 /*
 	Goal of the program is to generate thumbnails of all textures and an xml with those textures and thumbnails to load into a javascript page in order to be able to preview these files easily.
 */
-int main(int argc, char* argv[])
+int wmain(int argc, wchar_t* argv[])
 {
 	handleCMDArguments(argc, argv);
 

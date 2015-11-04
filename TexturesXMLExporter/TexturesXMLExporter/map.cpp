@@ -21,54 +21,54 @@ void map::registerMap()
 {
 	exporter::fileImg_count++;
 
-	if ((namePos = statics::isTypeMap(curPath.filename().generic_string(), statics::difSbstrs, statics::difSbstrsLen)) != string::npos)				// Diffuse maps
+	if ((namePos = statics::isTypeMap(curPath.filename().generic_wstring(), statics::difSbstrs, statics::difSbstrsLen)) != wstring::npos)				// Diffuse maps
 	{
 		exporter::fileDif_count++;
 		type.assign(mapType::Type::Diffuse);
 	}
-	else if ((namePos = statics::isTypeMap(curPath.filename().generic_string(), statics::bumpSbstrs, statics::bumpSbstrsLen)) != string::npos)			// Bump
+	else if ((namePos = statics::isTypeMap(curPath.filename().generic_wstring(), statics::bumpSbstrs, statics::bumpSbstrsLen)) != wstring::npos)			// Bump
 	{
 		exporter::fileBmp_count++;
 		type.assign(mapType::Type::Bump);
 	}
-	else if ((namePos = statics::isTypeMap(curPath.filename().generic_string(), statics::normalSbstrs, statics::normalSbstrsLen)) != string::npos)		// Normal maps
+	else if ((namePos = statics::isTypeMap(curPath.filename().generic_wstring(), statics::normalSbstrs, statics::normalSbstrsLen)) != wstring::npos)		// Normal maps
 	{
 		exporter::fileNormal_count++;
 		type.assign(mapType::Type::Normal);
 	}
-	else if ((namePos = statics::isTypeMap(curPath.filename().generic_string(), statics::glossSbstrs, statics::glossSbstrsLen)) != string::npos)		// Glossiness maps
+	else if ((namePos = statics::isTypeMap(curPath.filename().generic_wstring(), statics::glossSbstrs, statics::glossSbstrsLen)) != wstring::npos)		// Glossiness maps
 	{
 		exporter::fileGloss_count++;
 		type.assign(mapType::Type::Glossiness);
 	}
-	else if ((namePos = statics::isTypeMap(curPath.filename().generic_string(), statics::heightSbstrs, statics::heightSbstrsLen)) != string::npos)		// Height maps
+	else if ((namePos = statics::isTypeMap(curPath.filename().generic_wstring(), statics::heightSbstrs, statics::heightSbstrsLen)) != wstring::npos)		// Height maps
 	{
 		exporter::fileHeight_count++;
 		type.assign(mapType::Type::Height);
 	}
-	else if ((namePos = statics::isTypeMap(curPath.filename().generic_string(), statics::specSbstrs, statics::specSbstrsLen)) != string::npos)			// Specular maps
+	else if ((namePos = statics::isTypeMap(curPath.filename().generic_wstring(), statics::specSbstrs, statics::specSbstrsLen)) != wstring::npos)			// Specular maps
 	{
 		exporter::fileSpec_count++;
 		type.assign(mapType::Type::Specular);
 	}
-	else if ((namePos = statics::isTypeMap(curPath.filename().generic_string(), statics::roughSbstrs, statics::roughSbstrsLen)) != string::npos)		// Roughness maps
+	else if ((namePos = statics::isTypeMap(curPath.filename().generic_wstring(), statics::roughSbstrs, statics::roughSbstrsLen)) != wstring::npos)		// Roughness maps
 	{
 		exporter::fileRough_count++;
 		type.assign(mapType::Type::Roughness);
 	}
-	else if ((namePos = statics::isTypeMap(curPath.filename().generic_string(), statics::metalSbstrs, statics::metalSbstrsLen)) != string::npos)		// Metalness maps
+	else if ((namePos = statics::isTypeMap(curPath.filename().generic_wstring(), statics::metalSbstrs, statics::metalSbstrsLen)) != wstring::npos)		// Metalness maps
 	{
 		exporter::fileMetal_count++;
 		type.assign(mapType::Type::Metalness);
 	}
-	else if ((namePos = statics::isTypeMap(curPath.filename().generic_string(), statics::emissiveSbstrs, statics::emissiveSbstrsLen)) != string::npos)		// Emissive maps
+	else if ((namePos = statics::isTypeMap(curPath.filename().generic_wstring(), statics::emissiveSbstrs, statics::emissiveSbstrsLen)) != wstring::npos)		// Emissive maps
 	{
 		exporter::fileMetal_count++;
 		type.assign(mapType::Type::Emissive);
 	}
 	else
 	{
-		namePos = statics::isImgSffx(curPath.filename().generic_string());
+		namePos = statics::isImgSffx(curPath.filename().generic_wstring());
 		exporter::fileUnkn_count++;
 		type.assign(mapType::Type::Other);
 	}
@@ -84,9 +84,9 @@ const mapType map::getType() const
 	return type;
 }
 
-const string map::getName() const
+const wstring map::getName() const
 {
-	string filename = curPath.filename().generic_string();
+	wstring filename = curPath.filename().generic_wstring();
 	if (namePos)
 	{
 		return filename.substr(0, namePos);
@@ -94,26 +94,26 @@ const string map::getName() const
 	// If no name recognised just get the one before the last dot.
 	else
 	{
-		size_t dotPos = filename.find_last_of(".");
+		size_t dotPos = filename.find_last_of(L".");
 		return filename.substr(0, dotPos);
 	}
 }
 
 void map::generateThumb()
 {
-	thumbPath = string(statics::thumbnailsPath->c_str()).append("\\").append(curPath.filename().generic_string()).append(".png");
+	thumbPath = wstring(statics::thumbnailsPath->c_str()).append(L"\\").append(curPath.filename().generic_wstring()).append(L".png");
 
 	if (!boost::filesystem::exists(thumbPath))
 	{
-		string cmmd;
+		wstring cmmd;
 		if (statics::convertLocal)
-			cmmd = statics::convertPath + string(" -resize 200x200 ");
+			cmmd = statics::convertPath + wstring(L" -resize 200x200 ");
 		else
-			cmmd = "convert -resize 200x200 ";
+			cmmd = L"convert -resize 200x200 ";
 
-		cmmd.append("\"").append(curPath.generic_string()).append("\" \"").append(thumbPath.generic_string()).append("\"");
-
-		system(cmmd.c_str());
+		cmmd.append(L"\"").append(curPath.generic_wstring()).append(L"\" \"").append(thumbPath.generic_wstring()).append(L"\"");
+		
+		_wsystem(cmmd.c_str());
 	}
 }
 

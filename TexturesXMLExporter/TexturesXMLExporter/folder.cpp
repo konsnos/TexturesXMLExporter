@@ -41,13 +41,13 @@ void folder::listDir()
 		}
 		else if (is_regular_file(path))
 		{
-			if (statics::isImgSffx(path.extension().generic_string()))
+			if (statics::isImgSffx(path.extension().generic_wstring()))
 			{
 				map* newMap = new map(path);
 
 				/// Check if material exists.
 				size_t length = mats.size();
-				string matName = newMap->getName();
+				wstring matName = newMap->getName();
 				bool found = false;
 				for (size_t m = 0; m < length; m++)
 				{
@@ -141,9 +141,9 @@ void folder::iterateMatsForThumbs()
 		mat->generateMapsThumbs();
 }
 
-const string folder::getName() const
+const wstring folder::getName() const
 {
-	return curPath.filename().generic_string();
+	return curPath.filename().generic_wstring();
 }
 
 void folder::trimSingleMatFolders()
@@ -174,18 +174,18 @@ void folder::trimSingleMatFolders()
 	}
 }
 
-string folder::getPath() const
+wstring folder::getPath() const
 {
-	return curPath.string();
+	return curPath.wstring();
 }
 
-string folder::getPath_Parent() const
+wstring folder::getPath_Parent() const
 {
 	if (curPath.has_parent_path())
 	{
-		return curPath.parent_path().string();
+		return curPath.parent_path().wstring();
 	}
-	return "";
+	return L"";
 }
 
 void folder::destroy()

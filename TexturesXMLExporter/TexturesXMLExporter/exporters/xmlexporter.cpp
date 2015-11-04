@@ -12,21 +12,21 @@ xmlexporter::~xmlexporter()
 {
 }
 
-const string xmlexporter::getStringElement(const map& _map)
+const wstring xmlexporter::getStringElement(const map& _map)
 {
-	string elem = _map.getType().getString();
-	string xmlElem("<map type=\"" + elem + "\"" + " thumb=\"" + _map.getThumbPath().string() + "\">" + _map.getCurPath().string() + "</map>");
+	wstring elem = _map.getType().getString();
+	wstring xmlElem(L"<map type=\"" + elem + L"\" thumb=\"" + _map.getThumbPath().wstring() + L"\">" + _map.getCurPath().wstring() + L"</map>");
 
 	return xmlElem;
 }
 
-const string xmlexporter::getStringElement(const material& _mat)
+const wstring xmlexporter::getStringElement(const material& _mat)
 {
-	string elem;
+	wstring elem;
 
 	for (int i = 0; i < indents; i++)
-		elem.append("\t");
-	elem += "<material name=\"" + _mat.getName() + "\">\n";
+		elem.append(L"\t");
+	elem += L"<material name=\"" + _mat.getName() + L"\">\n";
 
 	indents++;
 
@@ -35,27 +35,27 @@ const string xmlexporter::getStringElement(const material& _mat)
 	for (size_t m = 0; m < mapsSize; m++)
 	{
 		for (int t = 0; t < indents; t++)
-			elem.append("\t");
-		elem += getStringElement(_mat.getMap(m)) + "\n";
+			elem.append(L"\t");
+		elem += getStringElement(_mat.getMap(m)) + L"\n";
 	}
 	/// ~Add maps
 
 	indents--;
 
 	for (int i = 0; i < indents; i++)
-		elem.append("\t");
-	elem += "</material>\n";
+		elem.append(L"\t");
+	elem += L"</material>\n";
 	return elem;
 }
 
-const string xmlexporter::getStringElement(const folder& _folder)
+const wstring xmlexporter::getStringElement(const folder& _folder)
 {
-	string elem;
+	wstring elem;
 
 	// Add indents
 	for (int i = 0; i < indents; i++)
-		elem.append("\t");
-	elem += "<folder name=\"" + _folder.getName() + "\">\n";
+		elem.append(L"\t");
+	elem += L"<folder name=\"" + _folder.getName() + L"\">\n";
 
 	indents++;
 	
@@ -72,8 +72,8 @@ const string xmlexporter::getStringElement(const folder& _folder)
 	indents--;
 
 	for (int i = 0; i < indents; i++)
-		elem.append("\t");
-	elem += "</folder>\n";
+		elem.append(L"\t");
+	elem += L"</folder>\n";
 
 	return elem;
 }

@@ -15,7 +15,7 @@ using namespace std;
 class material
 {
 public:
-	material(const string& newName, map* newMap);
+	material(const wstring& newName, map* newMap);
 	~material();
 
 	/* Adds a map to the list of maps for this material. */
@@ -23,7 +23,7 @@ public:
 	/* Generate thumbs from maps. */
 	void generateMapsThumbs();
 	/* Returns the name of the material. */
-	const string getName() const;
+	const wstring getName() const;
 	/* Returns the amount of maps contained in this material. */
 	const size_t getMapsAmount() const;
 	/* Returns a reference to a map at a specified index. */
@@ -33,7 +33,7 @@ public:
 	void destroy();
 private:
 	/* Name of the material. */
-	string name;
+	wstring name;
 	/* List of maps contained to this material. */
 	vector<map*> maps;
 };
