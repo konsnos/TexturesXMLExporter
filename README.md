@@ -19,6 +19,7 @@ A file textures.xml will be generated with all the textures and their thumbnails
 * .tga
 * .psd
 * .svg
+* .dds
 
 ### Supported textures suffixes
 | Map Type   | Suffixes              |
@@ -57,8 +58,14 @@ A file textures.xml will be generated with all the textures and their thumbnails
 
 ## Todo
 * What are the suffixes _t, _p?
-* Maps with the same name with the material should be marked diffuse.
-* Print a separate file for log.
+* Maps with the same name with the material, and type Other, should be marked diffuse.
+* Add to log file times for the tree ordering, thumbs generation, and xml generation.
 * Check how to suppress ImageMagick messages in the command line.
 * Copyright
 * License
+
+## Todo Future
+* Try other software to generate the thumbnails.
+* Try to improve speed. Currently the most pressing performance issue is the generation of the thumbnails.
+* Check if two thumbs with the same name overlap each other. Find a solution.
+* Create a GUI.
