@@ -132,15 +132,6 @@ void folder::addMat(material* newMat)
 	mats.push_back(newMat);
 }
 
-void folder::iterateMatsForThumbs()
-{
-	for (auto& folder : folders)
-		folder->iterateMatsForThumbs();
-
-	for (auto& mat : mats)
-		mat->generateMapsThumbs();
-}
-
 const wstring folder::getName() const
 {
 	return curPath.filename().generic_wstring();

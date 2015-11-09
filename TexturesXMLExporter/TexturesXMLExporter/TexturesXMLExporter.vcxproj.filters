@@ -39,6 +39,12 @@
     <ClInclude Include="exporters\xmlexporter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="thumbgenerators\imagemagick.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="thumbgenerators\ithumbgenerator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="exporter.cpp">
@@ -63,6 +69,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="exporters\xmlexporter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="thumbgenerators\imagemagick.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

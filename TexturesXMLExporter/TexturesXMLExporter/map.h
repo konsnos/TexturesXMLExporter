@@ -22,8 +22,6 @@ public:
 
 	/* Returns the material name without any file extensions or map type substrings. */
 	const wstring getName() const;
-	/* Generates thumbnail for this map if it doesn't exist. */
-	void generateThumb();
 	/* Returns the wstring of the map type. */
 	const mapType getType() const;
 	/* Returns the thumbnail path variable. */

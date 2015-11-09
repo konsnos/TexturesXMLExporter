@@ -17,6 +17,8 @@
 #include "exporters\istringexporter.h"
 #include "exporters\xmlexporter.h"
 
+#include "thumbgenerators\imagemagick.h"
+
 #include "boost\filesystem\path.hpp"
 #include "boost\filesystem\operations.hpp"
 
@@ -29,6 +31,7 @@
 using namespace std;
 using namespace boost::filesystem;
 using namespace exporters;
+using namespace thumbgenerators;
 
 unsigned long exporter::fileImg_count = 0;
 unsigned long exporter::fileOther_count = 0;
@@ -141,7 +144,9 @@ void exporter::initializeThumbnailsPath()
 void exporter::generateThumbs()
 {
 	cout << "Generating thumbnails..." << endl;
-	rootFolder->iterateMatsForThumbs();
+
+	IThumbGenerator* im = new imagemagick();
+	im->generateThumbs(*rootFolder);
 }
 
 void exporter::generateTreeOrder()

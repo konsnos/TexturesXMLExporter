@@ -21,12 +21,6 @@ void material::addMap(map* newMap)
 	maps.push_back(newMap);
 }
 
-void material::generateMapsThumbs()
-{
-	for (auto& map : maps)
-		map->generateThumb();
-}
-
 const wstring material::getName() const
 {
 	return name;

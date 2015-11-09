@@ -34,8 +34,6 @@ public:
 	const wstring getName() const;
 	/* Remove the last material from the list and return it. */
 	material* popMaterial();
-	/* Iterate recursively all materials in folder to generate thumbnails. */
-	void iterateMatsForThumbs();
 	/* Returns the path of the folder. */
 	wstring getPath() const;
 	/* Returns the parent path of the folder. */

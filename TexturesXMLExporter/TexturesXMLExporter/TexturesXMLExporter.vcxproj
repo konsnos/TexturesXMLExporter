@@ -14,15 +14,18 @@
     <ClInclude Include="exporter.h" />
     <ClInclude Include="folder.h" />
     <ClInclude Include="exporters\istringexporter.h" />
+    <ClInclude Include="thumbgenerators\imagemagick.h" />
     <ClInclude Include="map.h" />
     <ClInclude Include="mapType.h" />
     <ClInclude Include="material.h" />
     <ClInclude Include="statics.h" />
     <ClInclude Include="exporters\xmlexporter.h" />
+    <ClInclude Include="thumbgenerators\ithumbgenerator.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="exporter.cpp" />
     <ClCompile Include="folder.cpp" />
+    <ClCompile Include="thumbgenerators\imagemagick.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="map.cpp" />
     <ClCompile Include="mapType.cpp" />

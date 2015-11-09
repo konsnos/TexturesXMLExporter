@@ -20,8 +20,6 @@ public:
 
 	/* Adds a map to the list of maps for this material. */
 	void addMap(map* newMap);
-	/* Generate thumbs from maps. */
-	void generateMapsThumbs();
 	/* Returns the name of the material. */
 	const wstring getName() const;
 	/* Returns the amount of maps contained in this material. */

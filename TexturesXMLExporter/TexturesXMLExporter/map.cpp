@@ -14,6 +14,8 @@
 map::map(path& refPath)
 	: curPath(refPath)
 {
+	thumbPath = wstring(statics::thumbnailsPath->c_str()).append(L"\\").append(curPath.filename().generic_wstring()).append(L".png");
+
 	registerMap();
 }
 
@@ -96,24 +98,6 @@ const wstring map::getName() const
 	{
 		size_t dotPos = filename.find_last_of(L".");
 		return filename.substr(0, dotPos);
-	}
-}
-
-void map::generateThumb()
-{
-	thumbPath = wstring(statics::thumbnailsPath->c_str()).append(L"\\").append(curPath.filename().generic_wstring()).append(L".png");
-
-	if (!boost::filesystem::exists(thumbPath))
-	{
-		wstring cmmd;
-		if (statics::convertLocal)
-			cmmd = statics::convertPath + wstring(L" -resize 200x200 ");
-		else
-			cmmd = L"convert -resize 200x200 ";
-
-		cmmd.append(L"\"").append(curPath.generic_wstring()).append(L"\" \"").append(thumbPath.generic_wstring()).append(L"\"");
-		
-		_wsystem(cmmd.c_str());
 	}
 }
 
