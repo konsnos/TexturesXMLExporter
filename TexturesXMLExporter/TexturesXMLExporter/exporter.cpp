@@ -57,6 +57,7 @@ exporter::exporter()
 	initializeStatsCounts();
 
 	initializeStartingDir();
+
 	initializeThumbnailsPath();
 
 	generateTreeOrder();
@@ -107,7 +108,7 @@ void exporter::initializeStartingDir()
 	if (statics::startingPath == L"")
 		statics::startingPath = statics::currentPath;
 
-	wcout << L"Root path is\n" << statics::startingPath << endl << endl;
+	wcout << L"Root path is " << statics::startingPath << endl << endl;
 	rootPath = new path(statics::startingPath);
 
 	if (!is_directory(*rootPath))
@@ -271,6 +272,8 @@ void exporter::saveStats(double timeDuration, clock_t startTime)
 		stringToWrite.append(buffer);
 		stringToWrite.append(L" \n");
 	}
+
+	stringToWrite.append(L"\nRoot path is ").append(statics::startingPath).append(L"\nThumbnails directory is ").append(*statics::thumbnailsPath).append(L"\n");
 
 	fileLog << statics::to_utf8(stringToWrite);
 

@@ -14,9 +14,9 @@
 map::map(path& refPath)
 	: curPath(refPath)
 {
-	thumbPath = wstring(statics::thumbnailsPath->c_str()).append(L"\\").append(curPath.filename().generic_wstring()).append(L".png");
-
 	registerMap();
+	
+	thumbPath = wstring(statics::thumbnailsPath->c_str()).append(L"\\").append(curPath.filename().generic_wstring()).append(L".png");
 }
 
 void map::registerMap()

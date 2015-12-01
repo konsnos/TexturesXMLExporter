@@ -144,13 +144,13 @@ void folder::trimSingleMatFolders()
 		(*it)->trimSingleMatFolders();
 
 		int matsRecAmount = (*it)->getMatsRecAmount();
-		if (matsRecAmount == 0)
+		if (matsRecAmount == 0)	// If folder doesn't contain any material is erased.
 		{
 			(*it)->destroy();
 			delete * it;
 			it = folders.erase(it);
 		}
-		else if (matsRecAmount == 1 && (*it)->getMatsAmount() == 1)
+		else if (matsRecAmount == 1 && (*it)->getMatsAmount() == 1)	// If folder contains just one material, this material gets pushed to the parent folder.
 		{
 			material* folderMat = (*it)->popMaterial();
 			mats.push_back(folderMat);

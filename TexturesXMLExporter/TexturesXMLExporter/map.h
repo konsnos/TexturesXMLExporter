@@ -20,7 +20,7 @@ public:
 	map(path &);
 	~map();
 
-	/* Returns the material name without any file extensions or map type substrings. */
+	/* Returns the material name without any file extensions or map type substrings. If untilDot is true then the name also includes any suffix (eg. _n) */
 	const wstring getName() const;
 	/* Returns the wstring of the map type. */
 	const mapType getType() const;
