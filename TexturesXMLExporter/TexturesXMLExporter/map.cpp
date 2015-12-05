@@ -7,6 +7,7 @@
 #include "exporter.h"
 
 #include <iostream>
+#include <functional>
 
 #include "boost/filesystem/operations.hpp"
 
@@ -16,7 +17,10 @@ map::map(path& refPath)
 {
 	registerMap();
 	
-	thumbPath = wstring(statics::thumbnailsPath->c_str()).append(L"\\").append(curPath.filename().generic_wstring()).append(L".png");
+	// The thumbnail is the path to the thumbnails folder plus the filename in a png format.
+	thumbPath = wstring(statics::thumbnailsPath->c_str()).append(L"\\").append(
+		curPath.filename().generic_wstring()).append(L"_").append(
+		to_wstring(std::hash<wstring>()(curPath.generic_wstring()))).append(L".png");
 }
 
 void map::registerMap()

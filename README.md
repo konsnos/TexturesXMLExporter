@@ -54,6 +54,7 @@ A file textures.xml will be generated with all the textures and their thumbnails
 
 ## Notes
 * Symbol & causes problems in the xml format. It is replaced by &amp; .
+* There is a probability that two or more maps have the same name. For that reason the thumbnail path of the maps contains a hash number of their original full path to eliminate that possiblity.
 
 
 ## Todo
@@ -67,5 +68,4 @@ A file textures.xml will be generated with all the textures and their thumbnails
 ## Todo Future
 * Try other software to generate the thumbnails.
 * Try to improve speed. Currently the most pressing performance issue is the generation of the thumbnails.
-* Check if two thumbs with the same name overlap each other. Find a solution.
-* Create a GUI.
+* Create a GUI. Windows Forms should be a sufficient first solution.

@@ -40,4 +40,3 @@ private:
 	/* Registers map. Assigns and counts image type. */
 	void registerMap();
 };
-
