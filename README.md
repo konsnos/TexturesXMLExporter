@@ -24,15 +24,15 @@ A file textures.xml will be generated with all the textures and their thumbnails
 ### Supported textures suffixes
 | Map Type   | Suffixes              |
 | ---------- | ----------------------|
-| Diffuse    | _d                    |
+| Diffuse    | _d, _baked            |
 | Bump       | _bmp, _bump           |
-| Normal     | _normal, _n, _N, _nY+ |
-| Gloss      | _g, _G                |
-| Height     | _h, _H                |
-| Specular   | _s, _S, _spec         |
-| Roughness  | _r, _R                |
-| Metalness  | m, M, _MT             |
-| Emissive   | e, E                  |
+| Normal     | _normal, _n, _ny+     |
+| Gloss      | _g                    |
+| Height     | _h                    |
+| Specular   | _s, _spec             |
+| Roughness  | _r                    |
+| Metalness  | m, _mt                |
+| Emissive   | e                     |
 
 ### Optional command line arguments
 * -p

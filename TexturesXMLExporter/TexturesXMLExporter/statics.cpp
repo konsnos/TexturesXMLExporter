@@ -22,40 +22,40 @@ const int statics::sffxsArrayLen = 7;
 const wstring statics::imgSffxs[] = { L".png", L".jpg", L".tif", L".tga", L".psd", L".svg", L".dds" };
 
 ////// DIFFUSE MAPS
-const int statics::difSbstrsLen = 1;
-const wstring statics::difSbstrs[] = { L"_d" };
+const int statics::difSbstrsLen = 2;
+const wstring statics::difSbstrs[] = { L"_d", L"_baked" };
 
 ////// BUMP MAPS
 const int statics::bumpSbstrsLen = 2;
 const wstring statics::bumpSbstrs[] = { L"_bmp", L"bump" };
 
 ////// NORMAL MAPS
-const int statics::normalSbstrsLen = 4;
-const wstring statics::normalSbstrs[] = { L"_normal", L"_n", L"_N", L"_nY+" };
+const int statics::normalSbstrsLen = 3;
+const wstring statics::normalSbstrs[] = { L"_normal", L"_n", L"_ny+" };
 
 ////// GLOSSINESS MAPS
-const int statics::glossSbstrsLen = 2;
-const wstring statics::glossSbstrs[] = { L"_g", L"_G" };
+const int statics::glossSbstrsLen = 1;
+const wstring statics::glossSbstrs[] = { L"_g" };
 
 ////// HEIGHT MAPS
-const int statics::heightSbstrsLen = 2;
-const wstring statics::heightSbstrs[] = { L"_h", L"_H" };
+const int statics::heightSbstrsLen = 1;
+const wstring statics::heightSbstrs[] = { L"_h" };
 
 ////// SPECULAR MAPS
-const int statics::specSbstrsLen = 3;
-const wstring statics::specSbstrs[] = { L"_s", L"_S", L"_spec" };
+const int statics::specSbstrsLen = 2;
+const wstring statics::specSbstrs[] = { L"_s", L"_spec" };
 
 ////// ROUGHNESS MAPS
-const int statics::roughSbstrsLen = 2;
-const wstring statics::roughSbstrs[] = { L"_r", L"_R" };
+const int statics::roughSbstrsLen = 1;
+const wstring statics::roughSbstrs[] = { L"_r" };
 
 ////// METALNESS MAPS
-const int statics::metalSbstrsLen = 3;
-const wstring statics::metalSbstrs[] = { L"_m", L"_M", L"_MT" };
+const int statics::metalSbstrsLen = 2;
+const wstring statics::metalSbstrs[] = { L"_m", L"_mt" };
 
 ////// EMISSIVE MAPS
-const int statics::emissiveSbstrsLen = 2;
-const wstring statics::emissiveSbstrs[] = { L"_e", L"_E" };
+const int statics::emissiveSbstrsLen = 1;
+const wstring statics::emissiveSbstrs[] = { L"_e" };
 
 const wstring statics::thumbnailsFolderName = L"exp_thumbs";
 const wstring statics::texturesShowcaserFolderName = L"TexturesShowcaser";
@@ -86,12 +86,15 @@ const bool statics::isImgSffx(const wstring& sffx)
 	return false;
 }
 
-const size_t statics::isTypeMap(const wstring& filename, const wstring* substrs, int length)
+const size_t statics::isTypeMap(wstring filename, const wstring* substrs, int length)
 {
 	size_t pos;
 	size_t findIndex;
 	bool isStop;
 	bool notInEnd;
+
+	// make filename to lower case in order to ignore multiple case instances.
+	std::transform(filename.begin(), filename.end(), filename.begin(), ::tolower);
 
 	for (int i = 0; i < length; i++)
 	{

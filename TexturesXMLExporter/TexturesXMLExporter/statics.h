@@ -21,7 +21,7 @@ public:
 	Checks if file is a specific type of map by searching for a substring that will indicate it is.
 	Returns the index of the substring indication if it is. Returns wstring::npos if it isn't.
 	*/
-	static const size_t isTypeMap(const wstring& filename, const wstring* substrs, int length);
+	static const size_t isTypeMap(wstring filename, const wstring* substrs, int length);
 
 	static string statics::to_utf8(const wchar_t* buffer, int len);
 	static string statics::to_utf8(const std::wstring& str);
