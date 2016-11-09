@@ -12,6 +12,8 @@ using namespace boost::filesystem;
 
 using namespace std;
 
+enum ImgType { uknown, png, jpg, tif, tga, psd, svg, dds };
+
 ///TODO: Move these to the map class.
 class statics
 {
@@ -68,6 +70,9 @@ public:
 
 	/* Compares two paths for their type, and if the same compares their file name. */
 	static bool sortByTypeNFilename(const path& a, const path& b);
+
+	/* Returns the enum of the image suffix. */
+	static const ImgType getImgTypeBySuffix(const std::wstring& imgSuffix);
 
 	/* Folder name for the thumbnails. */
 	static const wstring statics::thumbnailsFolderName;

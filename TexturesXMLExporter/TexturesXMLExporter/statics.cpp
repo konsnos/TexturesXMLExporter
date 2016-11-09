@@ -160,6 +160,26 @@ bool statics::sortByTypeNFilename(const path& a, const path& b)
 	return false;
 }
 
+const ImgType statics::getImgTypeBySuffix(const std::wstring & imgSuffix)
+{
+	if (imgSuffix == statics::imgSffxs[0])
+		return ImgType::png;
+	else if (imgSuffix == statics::imgSffxs[1])
+		return ImgType::jpg;
+	else if (imgSuffix == statics::imgSffxs[2])
+		return ImgType::tif;
+	else if (imgSuffix == statics::imgSffxs[3])
+		return ImgType::tga;
+	else if (imgSuffix == statics::imgSffxs[4])
+		return ImgType::psd;
+	else if (imgSuffix == statics::imgSffxs[5])
+		return ImgType::svg;
+	else if (imgSuffix == statics::imgSffxs[6])
+		return ImgType::dds;
+
+	return ImgType::uknown;
+}
+
 string statics::to_utf8(const wchar_t* buffer, int len)
 {
 	int nChars = ::WideCharToMultiByte(CP_UTF8, 0, buffer, len, NULL, 0, NULL, NULL);

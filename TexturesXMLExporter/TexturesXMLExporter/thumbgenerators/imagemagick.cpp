@@ -35,7 +35,10 @@ void imagemagick::generateThumbs(const material& _mat)
 {
 	size_t mapsLength = _mat.getMapsAmount();
 	for (size_t i = 0; i < mapsLength; i++)
+	{
+
 		generateThumb(_mat.getMap(i));
+	}
 }
 
 void imagemagick::generateThumb(const map& _map)
