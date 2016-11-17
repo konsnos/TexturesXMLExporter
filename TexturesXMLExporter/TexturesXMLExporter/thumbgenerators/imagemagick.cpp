@@ -3,7 +3,7 @@
 
 #include "imagemagick.h"
 #include "boost\filesystem\operations.hpp"
-#include "../statics.h"
+#include "../string_utf8_helper.h"
 
 using namespace std;
 using namespace texturesExporter;
@@ -59,9 +59,9 @@ namespace thumbgenerators
 		{
 			try
 			{
-				Image image(_map.getCurPath().generic_string()); //TODO: check if it works with wstrings
+				Image image(string_utf8_helper::wstring_to_utf8(_map.getCurPath().generic_wstring())); //TODO: check if it works with wstrings
 				image.resize(Geometry(200, 200));
-				image.write(thumbPath.generic_string());
+				image.write(string_utf8_helper::wstring_to_utf8(thumbPath.generic_wstring()));
 			}
 			catch (const std::exception& error)
 			{
