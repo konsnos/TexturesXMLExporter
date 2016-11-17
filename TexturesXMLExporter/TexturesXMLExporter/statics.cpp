@@ -66,9 +66,6 @@ namespace texturesExporter
 	wstring* statics::thumbnailsPath = new wstring();
 	wchar_t* statics::startingPath = L"";
 
-	bool statics::convertLocal = false;
-	wchar_t* statics::convertPath = L"";
-
 	const float statics::version = 1.0f;
 
 	/**

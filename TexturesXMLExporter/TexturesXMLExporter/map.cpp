@@ -13,7 +13,6 @@
 
 namespace texturesExporter
 {
-
 	map::map(path& refPath)
 		: curPath(refPath)
 	{

@@ -89,11 +89,6 @@ namespace texturesExporter
 		/* Starting path to search for textures. */
 		static wchar_t* startingPath;
 
-		/* If set to true then the program will search for the convert program in the path given. */
-		static bool convertLocal;
-		/* Path for the convert program (ImageMagick).*/
-		static wchar_t* convertPath;
-
 		/* Version of this program. */
 		static const float version;
 	};
