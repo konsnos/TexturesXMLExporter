@@ -8,6 +8,7 @@
 #include "statics.h"
 
 using namespace std;
+using namespace texturesExporter;
 
 /* Stores parameters passed from the command line. */
 void handleCMDArguments(int argc, wchar_t* argv[])

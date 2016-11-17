@@ -8,36 +8,38 @@
 
 using namespace std;
 
-/* Contains information about the type of a texture. */
-class mapType
+namespace texturesExporter
 {
-public:
-	enum Type : int
+	/* Contains information about the type of a texture. */
+	class mapType
 	{
-		Diffuse = 0,
-		Bump,
-		Normal,
-		Glossiness,
-		Height,
-		Specular,
-		Roughness,
-		Metalness,
-		Emissive,
-		Other
+	public:
+		enum Type : int
+		{
+			Diffuse = 0,
+			Bump,
+			Normal,
+			Glossiness,
+			Height,
+			Specular,
+			Roughness,
+			Metalness,
+			Emissive,
+			Other
+		};
+
+		mapType();
+		~mapType();
+
+		void assign(Type newType);
+		/* Returns the wstring of the type. */
+		const wstring getString() const;
+		/* Returns the type */
+		const Type getType() const;
+
+	private:
+		Type type;
+
+		static const wstring types[];
 	};
-
-	mapType();
-	~mapType();
-
-	void assign(Type newType);
-	/* Returns the wstring of the type. */
-	const wstring getString() const;
-	/* Returns the type */
-	const Type getType() const;
-	
-private:
-	Type type;
-
-	static const wstring types[];
-};
-
+}

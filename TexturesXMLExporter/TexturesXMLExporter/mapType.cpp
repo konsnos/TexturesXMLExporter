@@ -4,28 +4,31 @@
 */
 #include "mapType.h"
 
-const wstring mapType::types[] = { L"diffuse", L"bump", L"normal", L"gloss", L"height", L"specular", L"rough", L"metal", L"emissive", L"other" };
-
-mapType::mapType()
-	:type(Other)
+namespace texturesExporter
 {
-}
+	const wstring mapType::types[] = { L"diffuse", L"bump", L"normal", L"gloss", L"height", L"specular", L"rough", L"metal", L"emissive", L"other" };
 
-mapType::~mapType()
-{
-}
+	mapType::mapType()
+		:type(Other)
+	{
+	}
 
-void mapType::assign(Type newType)
-{
-	type = newType;
-}
+	mapType::~mapType()
+	{
+	}
 
-const wstring mapType::getString() const
-{
-	return types[type];
-}
+	void mapType::assign(Type newType)
+	{
+		type = newType;
+	}
 
-const mapType::Type mapType::getType() const
-{
-	return type;
+	const wstring mapType::getString() const
+	{
+		return types[type];
+	}
+
+	const mapType::Type mapType::getType() const
+	{
+		return type;
+	}
 }

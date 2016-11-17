@@ -2,6 +2,8 @@
 #include "../folder.h"
 #include "ithumbgenerator.h"
 
+using namespace texturesExporter;
+
 namespace thumbgenerators
 {
 	class imagemagick : public IThumbGenerator
@@ -16,7 +18,7 @@ namespace thumbgenerators
 		/* Iterates alls maps in the material to generate thumbnails. */
 		void generateThumbs(const material&);
 		/* Genrates thumbnail of the map. */
-		void generateThumb(const map&);
+		void generateThumb(const texturesExporter::map&);
 	private:
 		/* Path of the thumbnail. */
 		path thumbPath;

@@ -2,6 +2,8 @@
 
 #include "istringexporter.h"
 
+using namespace texturesExporter;
+
 namespace exporters
 {
 	class xmlexporter : public IStringExporter

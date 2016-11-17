@@ -8,6 +8,8 @@
 #include "../material.h"
 #include "../map.h"
 
+using namespace texturesExporter;
+
 namespace thumbgenerators
 {
 	/* Interface which represents */
@@ -22,6 +24,6 @@ namespace thumbgenerators
 		/* Iterates alls maps in the material to generate thumbnails. */
 		virtual void generateThumbs(const material&) = 0;
 		/* Genrates thumbnail of the map. */
-		virtual void generateThumb(const map&) = 0;
+		virtual void generateThumb(const texturesExporter::map&) = 0;
 	};
 }
