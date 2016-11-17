@@ -43,7 +43,7 @@ namespace texturesExporter
 			{
 				if (statics::isImgSffx(path.extension().generic_wstring()))
 				{
-					map* newMap = new map(path);
+					map* newMap = new map(path, statics::getImgTypeBySuffix(path.extension().generic_wstring()));
 
 					/// Check if material exists.
 					size_t length = mats.size();

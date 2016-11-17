@@ -43,29 +43,29 @@ namespace thumbgenerators
 	{
 		size_t mapsLength = _mat.getMapsAmount();
 		for (size_t i = 0; i < mapsLength; i++)
-		{
-
 			generateThumb(_mat.getMap(i));
-		}
 	}
 
 	void imagemagick::generateThumb(const texturesExporter::map& _map)
 	{
-		thumbPath = _map.getThumbPath(); // get thumb path.
-
-		// check if the thumbnail already exists.
-		// if not generate it.
-		if (!boost::filesystem::exists(thumbPath))
+		if (_map.requiresThumb())
 		{
-			try
+			thumbPath = _map.getThumbPath(); // get thumb path.
+
+			// check if the thumbnail already exists.
+			// if not generate it.
+			if (!boost::filesystem::exists(thumbPath))
 			{
-				Image image(string_utf8_helper::wstring_to_utf8(_map.getCurPath().generic_wstring())); //TODO: check if it works with wstrings
-				image.resize(Geometry(200, 200));
-				image.write(string_utf8_helper::wstring_to_utf8(thumbPath.generic_wstring()));
-			}
-			catch (const std::exception& error)
-			{
-				cout << "Error generating thumbnail: " << error.what() << endl; // this prints the error.
+				try
+				{
+					Image image(string_utf8_helper::wstring_to_utf8(_map.getCurPath().generic_wstring())); //TODO: check if it works with wstrings
+					image.resize(Geometry(200, 200));
+					image.write(string_utf8_helper::wstring_to_utf8(thumbPath.generic_wstring()));
+				}
+				catch (const std::exception& error)
+				{
+					cout << "Error generating thumbnail: " << error.what() << endl; // this prints the error.
+				}
 			}
 		}
 	}

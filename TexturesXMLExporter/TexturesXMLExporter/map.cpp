@@ -13,8 +13,8 @@
 
 namespace texturesExporter
 {
-	map::map(path& refPath)
-		: curPath(refPath)
+	map::map(path& refPath, ImgType refImgType)
+		: curPath(refPath), imgType(refImgType)
 	{
 		registerMap();
 
@@ -75,7 +75,7 @@ namespace texturesExporter
 		}
 		else
 		{
-			namePos = statics::isImgSffx(curPath.filename().generic_wstring());
+			//namePos = statics::isImgSffx(curPath.filename().generic_wstring());
 			exporter::fileUnkn_count++;
 			type.assign(mapType::Type::Other);
 		}
@@ -114,5 +114,27 @@ namespace texturesExporter
 	const path map::getCurPath() const
 	{
 		return curPath;
+	}
+
+	const bool map::requiresThumb() const
+	{
+		switch (imgType)
+		{
+		case texturesExporter::png:
+		case texturesExporter::jpg:
+			return false;
+		case texturesExporter::tif:
+		case texturesExporter::tga:
+		case texturesExporter::psd:
+		case texturesExporter::svg:
+		case texturesExporter::dds:
+			return true;
+		// nothing should get past this
+		default:
+			string strError("File type is unidentified. File path: ");
+			strError.append(curPath.generic_string());
+			throw std::invalid_argument(strError);
+			break;
+		}
 	}
 }

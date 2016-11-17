@@ -9,6 +9,7 @@
 #include "boost\filesystem\path.hpp"
 
 #include "mapType.h"
+#include "statics.h"
 
 using namespace std;
 using namespace boost::filesystem;
@@ -19,7 +20,7 @@ namespace texturesExporter
 	class map
 	{
 	public:
-		map(path &);
+		map(path&, ImgType);
 		~map();
 
 		/* Returns the material name without any file extensions or map type substrings. If untilDot is true then the name also includes any suffix (eg. _n) */
@@ -30,6 +31,8 @@ namespace texturesExporter
 		const path getThumbPath() const;
 		/* Returns map full path variable. */
 		const path getCurPath() const;
+		/* Checks if the map requires a thumbnail to be created or if the file type is compatible with a browser. */
+		const bool requiresThumb() const;
 
 	private:
 		size_t namePos;
@@ -37,6 +40,8 @@ namespace texturesExporter
 		mapType type;
 		/* File's full path. */
 		path curPath;
+		/* Indicates the file type of the image file.*/
+		ImgType imgType;
 		/* Thumbnail's path. */
 		path thumbPath;
 		/* Registers map. Assigns and counts image type. */

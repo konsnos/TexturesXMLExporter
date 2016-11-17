@@ -159,7 +159,7 @@ namespace texturesExporter
 		return false;
 	}
 
-	const ImgType statics::getImgTypeBySuffix(const std::wstring & imgSuffix)
+	const ImgType statics::getImgTypeBySuffix(const std::wstring& imgSuffix)
 	{
 		if (imgSuffix == statics::imgSffxs[0])
 			return ImgType::png;

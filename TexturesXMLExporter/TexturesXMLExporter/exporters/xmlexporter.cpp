@@ -16,7 +16,12 @@ namespace exporters
 	const wstring xmlexporter::getStringElement(const map& _map)
 	{
 		wstring elem = _map.getType().getString();
-		wstring xmlElem(L"<map type=\"" + elem + L"\" thumb=\"" + _map.getThumbPath().wstring() + L"\">" + _map.getCurPath().wstring() + L"</map>");
+		wstring xmlElem(L"<map type=\"" + elem + L"\"");
+		// if map has thumbnail add it to the xml.
+		if (_map.requiresThumb())
+			xmlElem.append(L" thumb=\"" + _map.getThumbPath().wstring() + L"\"");
+
+		xmlElem.append(L">" + _map.getCurPath().wstring() + L"</map>");
 
 		return xmlElem;
 	}

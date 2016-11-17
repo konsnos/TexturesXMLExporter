@@ -14,6 +14,7 @@ using namespace std;
 
 namespace texturesExporter
 {
+	/* Image file types. */
 	enum ImgType { uknown, png, jpg, tif, tga, psd, svg, dds };
 
 	///TODO: Move these to the map class.
