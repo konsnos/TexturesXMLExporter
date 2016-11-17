@@ -53,36 +53,19 @@ namespace thumbgenerators
 	{
 		thumbPath = _map.getThumbPath(); // get thumb path.
 
-		// make sure the thumb path exists before generating the thumbnail.
+		// check if the thumbnail already exists.
+		// if not generate it.
 		if (!boost::filesystem::exists(thumbPath))
 		{
-			/*if (statics::convertLocal)
-				cmmd = statics::convertPath + wstring(L" -resize 200x200 ");
-			else
-				cmmd = L"convert -resize 200x200 ";
-
-			cmmd.append(L"\"").append(_map.getCurPath().generic_wstring()).append(L"\" \"").append(thumbPath.generic_wstring()).append(L"\"");
-
-			_wsystem(cmmd.c_str());*/
-
-			Image image;
-
 			try
 			{
-				image.read(_map.getCurPath().generic_string()); //TODO: check if it works with wstrings
-			}
-			catch (const std::exception& error)
-			{
-				//cout << "Error: " << error.what() << endl; // this prints the error.
-			}
-			try
-			{
+				Image image(_map.getCurPath().generic_string()); //TODO: check if it works with wstrings
 				image.resize(Geometry(200, 200));
 				image.write(thumbPath.generic_string());
 			}
 			catch (const std::exception& error)
 			{
-				cout << "Error: " << error.what() << endl; // this prints the error.
+				cout << "Error generating thumbnail: " << error.what() << endl; // this prints the error.
 			}
 		}
 	}
