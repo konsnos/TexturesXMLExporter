@@ -75,7 +75,7 @@ namespace texturesExporter
 		}
 		else
 		{
-			//namePos = statics::isImgSffx(curPath.filename().generic_wstring());
+			namePos = curPath.filename().generic_wstring().find_last_of(L".");
 			exporter::fileUnkn_count++;
 			type.assign(mapType::Type::Other);
 		}
@@ -93,17 +93,7 @@ namespace texturesExporter
 
 	const wstring map::getName() const
 	{
-		wstring filename = curPath.filename().generic_wstring();
-		if (namePos)
-		{
-			return filename.substr(0, namePos);
-		}
-		// If no name recognised just get the one before the last dot.
-		else
-		{
-			size_t dotPos = filename.find_last_of(L".");
-			return filename.substr(0, dotPos);
-		}
+		return curPath.filename().generic_wstring().substr(0, namePos);
 	}
 
 	const path map::getThumbPath() const
