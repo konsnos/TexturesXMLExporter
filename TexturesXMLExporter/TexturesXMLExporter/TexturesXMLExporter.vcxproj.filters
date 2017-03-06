@@ -45,6 +45,9 @@
     <ClInclude Include="thumbgenerators\ithumbgenerator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="string_utf8_helper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="exporter.cpp">
@@ -72,6 +75,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="thumbgenerators\imagemagick.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="string_utf8_helper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

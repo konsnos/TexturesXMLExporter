@@ -6,6 +6,13 @@ TexturesXMLExporter aims to extract all textures to an xml file, formatted to be
 * ImageMagick ( http://www.imagemagick.org/ )
 ImageMagick is used to create the thumbnails of the textures. It can either be installed in the system, or provided in a portable version which can be used with the -im argument (see Optional command line arguments).
 
+* Boost ( http://www.boost.org/ )
+Boost is used to access directories and files.
+
+### Useful links for build errors
+* fatal error LNK1104: cannot open file 'libboost_system-vc110-mt-gd-1_51.lib' ( http://stackoverflow.com/questions/13042561/fatal-error-lnk1104-cannot-open-file-libboost-system-vc110-mt-gd-1-51-lib/29567344#29567344 )
+* Linker error LNK1104 with 'libboost_filesystem-vc100-mt-s-1_49.lib' ( http://stackoverflow.com/questions/9628527/linker-error-lnk1104-with-libboost-filesystem-vc100-mt-s-1-49-lib/9628724#9628724 )
+* Include ImageMagick in project ( https://fortunomedia.com/magick-plus-plus-config-vs2010/ )
 
 ## Documentation
 Drop the executable file inside the folder where the textures are being kept. Then execute it.
@@ -23,7 +30,7 @@ A file textures.xml will be generated with all the textures and their thumbnails
 
 ### Supported textures suffixes
 | Map Type   | Suffixes              |
-| ---------- | ----------------------|
+|------------|-----------------------|
 | Diffuse    | _d, _baked            |
 | Bump       | _bmp, _bump           |
 | Normal     | _normal, _n, _ny+     |
