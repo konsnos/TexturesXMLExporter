@@ -48,8 +48,8 @@ namespace texturesExporter
 	const wstring statics::specSbstrs[] = { L"_s", L"_spec" };
 
 	////// ROUGHNESS MAPS
-	const int statics::roughSbstrsLen = 1;
-	const wstring statics::roughSbstrs[] = { L"_r" };
+	const int statics::roughSbstrsLen = 2;
+	const wstring statics::roughSbstrs[] = { L"_r", L"_roughness" };
 
 	////// METALNESS MAPS
 	const int statics::metalSbstrsLen = 2;
