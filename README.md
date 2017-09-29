@@ -65,6 +65,7 @@ A file textures.xml will be generated with all the textures and their thumbnails
 
 
 ## Todo
+* Try GraphicsMagick
 * What are the suffixes _t, _p?
 * Maps with the same name with the material, and type Other, should be marked diffuse.
 * Add to log file times for the tree ordering, thumbs generation, and xml generation.
